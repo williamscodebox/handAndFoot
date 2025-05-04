@@ -1,3 +1,4 @@
+import AntDesign from "@expo/vector-icons/AntDesign";
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -28,15 +29,17 @@ export default function SingleCardCount() {
   };
   return (
     <View style={styles.container}>
-      <Text>singleCardCount</Text>
-      <Text style={styles.counterValue}>{counter}</Text>
       <View style={styles.buttons}>
-        <TouchableOpacity style={styles.button} onPress={handleClick1}>
-          <Text>Increment</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleClick2}>
-          <Text>Decrement</Text>
-        </TouchableOpacity>
+        <Text>singleCardCount</Text>
+        <View style={styles.rightButtons}>
+          <TouchableOpacity style={styles.button} onPress={handleClick2}>
+            <AntDesign name="minus" size={24} color="black" />
+          </TouchableOpacity>
+          <Text style={styles.counterValue}>{counter}</Text>
+          <TouchableOpacity style={styles.button} onPress={handleClick1}>
+            <AntDesign name="plus" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={{ margin: 15 }}>
         <TextInput
@@ -80,23 +83,42 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   counterValue: {
-    fontSize: 36,
+    fontSize: 30,
     fontWeight: "bold",
-    marginVertical: 10,
+    // marginVertical: 10,
     color: "#007bff",
+    textAlign: "center",
   },
   buttons: {
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    margin: 10,
+    padding: 10,
+    paddingLeft: 20,
+  },
+  rightButtons: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   button: {
-    fontSize: 16,
-    padding: 13,
-    margin: 5,
+    fontSize: 30,
+    color: "black",
+    fontWeight: "bold",
+    height: 45,
+    width: 45,
+    // marginTop: 10,
+    // marginBottom: 10,
+    padding: 10,
+    margin: 10,
     borderRadius: 8,
-    backgroundColor: "green",
-    elevation: 20,
+    backgroundColor: "#AEEEF0",
+    elevation: 5,
+    alignItems: "center",
+    justifyContent: "center",
   },
+
   setInitialCountButton: {
     padding: 10,
     fontSize: 16,
