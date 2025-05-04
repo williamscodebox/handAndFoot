@@ -1,14 +1,8 @@
-import AntDesign from "@expo/vector-icons/AntDesign";
+import { AntDesign } from "@expo/vector-icons";
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function SingleCardCount() {
+export default function SingleCardCount({ card }) {
   const [counter, setCounter] = useState(0);
   const [initialCount, setInitialCount] = useState(0);
 
@@ -17,7 +11,7 @@ export default function SingleCardCount() {
   };
 
   const handleReset = () => {
-    setCounter(initialCount);
+    setCounter(0);
   };
 
   const handleClick1 = () => {
@@ -30,7 +24,7 @@ export default function SingleCardCount() {
   return (
     <View style={styles.container}>
       <View style={styles.buttons}>
-        <Text>singleCardCount</Text>
+        <Text style={styles.nameStyle}>{card}</Text>
         <View style={styles.rightButtons}>
           <TouchableOpacity style={styles.button} onPress={handleClick2}>
             <AntDesign name="minus" size={24} color="black" />
@@ -41,26 +35,28 @@ export default function SingleCardCount() {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={{ margin: 15 }}>
-        <TextInput
-          keyboardType="numeric"
-          value={initialCount.toString()}
-          onChangeText={handleInitialCountChange}
-          style={{
-            padding: 10,
-            fontSize: 16,
-            borderRadius: 8,
-            borderColor: "black",
-            borderWidth: 1,
-          }}
-        />
-        <TouchableOpacity
-          onPress={handleReset}
-          style={styles.setInitialCountButton}
-        >
-          <Text style={{ color: "#fff", fontSize: 16 }}>Set Initial Count</Text>
-        </TouchableOpacity>
-      </View>
+      {/* <View style={{ margin: 15 }}>
+        {/* <TextInput
+            keyboardType="numeric"
+            value={initialCount.toString()}
+            onChangeText={handleInitialCountChange}
+            style={{
+              padding: 10,
+              fontSize: 16,
+              borderRadius: 8,
+              borderColor: "black",
+              borderWidth: 1,
+            }}
+          /> 
+         <TouchableOpacity
+            onPress={handleReset}
+            style={styles.setInitialCountButton}
+          > 
+         <Text style={{ color: "#fff", fontSize: 16 }}>
+              Set Initial Count
+            </Text>
+          </TouchableOpacity> 
+      </View> */}
     </View>
   );
 }
@@ -71,22 +67,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#f8f8f8",
+    borderRadius: 18,
   },
-  header: {
-    fontSize: 16,
-    marginVertical: 10,
-    color: "grey",
-    textTransform: "uppercase",
-  },
+  // header: {
+  //   fontSize: 16,
+  //   marginVertical: 10,
+  //   color: "grey",
+  //   textTransform: "uppercase",
+  // },
   heading: {
     color: "green",
     fontSize: 30,
+  },
+  nameStyle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "black",
+    textAlign: "center",
+    marginVertical: 10,
   },
   counterValue: {
     fontSize: 30,
     fontWeight: "bold",
     // marginVertical: 10,
-    color: "#007bff",
+    color: "black",
     textAlign: "center",
   },
   buttons: {
@@ -94,8 +98,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    margin: 10,
-    padding: 10,
+    margin: 0,
+    padding: 0,
     paddingLeft: 20,
   },
   rightButtons: {
