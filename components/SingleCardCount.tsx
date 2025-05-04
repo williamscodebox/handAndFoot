@@ -1,35 +1,42 @@
 import { AntDesign } from "@expo/vector-icons";
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function SingleCardCount({ card }) {
-  const [counter, setCounter] = useState(0);
-  const [initialCount, setInitialCount] = useState(0);
+export default function SingleCardCount({
+  card,
+  value,
+  name,
+  updateCombinedState,
+}) {
+  // const [counter, setCounter] = useState(0);
+  // const [initialCount, setInitialCount] = useState(0);
 
-  const handleInitialCountChange = (value) => {
-    setInitialCount(Number(value));
-  };
+  // const handleInitialCountChange = (value) => {
+  //   setInitialCount(Number(value));
+  // };
 
-  const handleReset = () => {
-    setCounter(0);
-  };
+  // const handleReset = () => {
+  //   setCounter(0);
+  // };
 
   const handleClick1 = () => {
-    setCounter(counter + 1);
+    // setCounter(counter + 1);
+    updateCombinedState(card, value + 1);
   };
 
   const handleClick2 = () => {
-    setCounter(counter - 1);
+    // setCounter(counter - 1);
+    updateCombinedState(card, value - 1);
   };
   return (
     <View style={styles.container}>
       <View style={styles.buttons}>
-        <Text style={styles.nameStyle}>{card}</Text>
+        <Text style={styles.nameStyle}>{name}</Text>
         <View style={styles.rightButtons}>
           <TouchableOpacity style={styles.button} onPress={handleClick2}>
             <AntDesign name="minus" size={24} color="black" />
           </TouchableOpacity>
-          <Text style={styles.counterValue}>{counter}</Text>
+          <Text style={styles.counterValue}>{value}</Text>
           <TouchableOpacity style={styles.button} onPress={handleClick1}>
             <AntDesign name="plus" size={24} color="black" />
           </TouchableOpacity>

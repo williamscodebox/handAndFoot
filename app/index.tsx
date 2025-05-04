@@ -1,5 +1,6 @@
 import AppButton from "@/components/AppButton";
 import SingleCardCount from "@/components/SingleCardCount";
+import { useEffect, useState } from "react";
 import {
   Alert,
   FlatList,
@@ -10,29 +11,51 @@ import {
 } from "react-native";
 
 export default function Index() {
-  const cards = [
-    { id: "1", name: "Aces (20 Points)" },
-    { id: "2", name: "Kings (10 Points)" },
-    { id: "3", name: "Queens (10 Points)" },
-    { id: "4", name: "Jacks (10 Points)" },
-    { id: "5", name: "Tens (10 Points)" },
-    { id: "6", name: "Nines (10 Points)" },
-    { id: "7", name: "Eights (10 Points)" },
-    { id: "8", name: "Sevens (5 Points)" },
-    { id: "9", name: "Sixes (5 Points)" },
-    { id: "10", name: "Fives (5 Points)" },
-    { id: "11", name: "Fours (5 Points)" },
-    { id: "12", name: "Black Threes (0 Points)" },
-    { id: "13", name: "Red Threes (-500 Points)" },
-    { id: "14", name: "Twos (20 Points)" },
-    { id: "15", name: "Jokers (50 Points)" },
-  ];
-  const counters = Array.from({ length: 5 }, (_, index) => ({
-    id: index.toString(),
-  })); // Define the renderItem function
+  const [counters, setCounters] = useState([
+    { id: "1", name: "Aces (20 Points)", value: 0 },
+    { id: "2", name: "Kings (10 Points)", value: 0 },
+    { id: "3", name: "Queens (10 Points)", value: 0 },
+    { id: "4", name: "Jacks (10 Points)", value: 0 },
+    { id: "5", name: "Kings (10 Points)", value: 0 },
+    { id: "6", name: "Queens (10 Points)", value: 0 },
+    { id: "7", name: "Queens (10 Points)", value: 0 },
+    { id: "8", name: "Jacks (10 Points)", value: 0 },
+    { id: "9", name: "Tens (10 Points)", value: 0 },
+    { id: "10", name: "Nines (10 Points)", value: 0 },
+    { id: "11", name: "Eights (10 Points)", value: 0 },
+    { id: "12", name: "Sevens (5 Points)", value: 0 },
+    { id: "13", name: "Sixes (5 Points)", value: 0 },
+    { id: "14", name: "Fives (5 Points)", value: 0 },
+    { id: "15", name: "Fours (5 Points)", value: 0 },
+    { id: "16", name: "Black Threes (0 Points)", value: 0 },
+    { id: "17", name: "Red Threes (-500 Points)", value: 0 },
+    { id: "18", name: "Twos (20 Points)", value: 0 },
+    { id: "19", name: "Jokers (50 Points)", value: 0 },
+  ]);
+
+  useEffect(() => {
+    console.log("Counters updated:", counters);
+  }, [counters]);
+
+  const updateCombinedState = (id, newValue) => {
+    setCounters((prevCounters) =>
+      prevCounters.map((counter) =>
+        counter.id === id ? { ...counter, value: newValue } : counter
+      )
+    );
+  };
+
+  const totalValue = counters.reduce((acc, counter) => acc + counter.value, 0);
+
+  // Define the renderItem function
   const renderItem = ({ item }) => (
     <View>
-      <SingleCardCount card={item.name} />
+      <SingleCardCount
+        card={item.id}
+        name={item.name}
+        value={item.value}
+        updateCombinedState={updateCombinedState}
+      />
     </View>
   );
   const runPrompt = () => {
@@ -46,12 +69,12 @@ export default function Index() {
         {/* <Text style={styles.header}>Counter App</Text> */}
         {/* <SingleCardCount /> */}
         <FlatList
-          data={cards}
+          data={counters}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
           contentContainerStyle={{ gap: 10, padding: 10 }}
         />
-        <Text style={styles.bottomText}>Total Score: </Text>
+        <Text style={styles.bottomText}>Total Score: {totalValue} </Text>
         <AppButton onPress={runPrompt}>Clear Score</AppButton>
       </View>
     </SafeAreaView>
