@@ -1,14 +1,9 @@
 import AppButton from "@/components/AppButton";
 import SingleCardCount from "@/components/SingleCardCount";
+import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import {
-  Alert,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Alert, FlatList, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const [counters, setCounters] = useState([
@@ -83,6 +78,7 @@ export default function Index() {
         <Text style={styles.bottomText}>Total Score: {totalValue} </Text>
         <AppButton onPress={runPrompt}>Clear Score</AppButton>
       </View>
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 }
@@ -97,10 +93,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#f8f8f8",
-  },
-  heading: {
-    color: "green",
-    fontSize: 30,
+    padding: 10,
   },
   bottomText: {
     fontSize: 25,
