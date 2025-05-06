@@ -66,9 +66,6 @@ export default function Index() {
   return (
     <SafeAreaView style={styles.safeContainer}>
       <View style={styles.container}>
-        {/* <Text style={styles.heading}>Hand And Foot Counter</Text> */}
-        {/* <Text style={styles.header}>Counter App</Text> */}
-        {/* <SingleCardCount /> */}
         <FlatList
           data={counters}
           renderItem={renderItem}
