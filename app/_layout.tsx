@@ -12,7 +12,7 @@ export default function RootLayout() {
             headerTintColor: "#010000",
             headerTitleStyle: { fontSize: 25, fontWeight: "bold" },
             headerStyle: {
-              backgroundColor: "#f8f8f8",
+              backgroundColor: "rgb(94, 94, 204) 95%",
             },
             headerShadowVisible: false,
           }}

@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   rightButtons: {
     flexDirection: "row",
     alignItems: "center",
-    marginRight: 20,
+    marginRight: 10,
   },
   button: {
     fontSize: 30,

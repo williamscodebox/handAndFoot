@@ -1,10 +1,11 @@
 import AppButton from "@/components/AppButton";
 import SingleCardCount from "@/components/SingleCardCount";
-import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { Alert, FlatList, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function App() {
+export default function Index() {
   const [counters, setCounters] = useState([
     { id: "1", name: "Aces", points: "(20 Points)", value: 0, pointValue: 20 },
     { id: "2", name: "Kings", points: "(10 Points)", value: 0, pointValue: 10 },
@@ -92,60 +93,36 @@ export default function App() {
     Alert.alert("Score Cleared", "All scores have been cleared.");
     clearAllCounters();
   };
+
   return (
-    <View style={styles.container}>
-      <LinearGradient
-        // Background Linear Gradient
-        colors={[
-          "rgb(94, 94, 204) 35%",
-          "rgba(0, 212, 255, 1) 100%)",
-          "transparent",
-        ]}
-        style={styles.background}
-      >
-        <View style={styles.button}>
-          <FlatList
-            data={counters}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-            contentContainerStyle={{ gap: 10, padding: 10 }}
-          />
-
-          <Text style={styles.bottomText}>Total Score: {totalValue} </Text>
-
-          <AppButton onPress={runPrompt}>Clear Score</AppButton>
-        </View>
-      </LinearGradient>
-    </View>
+    <SafeAreaView style={styles.safeContainer}>
+      <View style={styles.container}>
+        <FlatList
+          data={counters}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{ gap: 10, padding: 10 }}
+        />
+        <Text style={styles.bottomText}>Total Score: {totalValue} </Text>
+        <AppButton onPress={runPrompt}>Clear Score</AppButton>
+      </View>
+      <StatusBar style="auto" />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeContainer: {
     flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-
-    padding: 0,
+    backgroundColor: "#f8f8f8",
   },
-  background: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: "100%",
-  },
-  button: {
+  container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-
-    borderRadius: 5,
-  },
-  text: {
-    backgroundColor: "transparent",
-    fontSize: 15,
-    color: "#fff",
+    backgroundColor: "orange",
+    padding: 0,
+    marginTop: -25,
   },
   bottomText: {
     fontSize: 25,

@@ -37,7 +37,8 @@
     "react-native-screens": "~4.10.0",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
-    "expo-dev-client": "~5.1.8"
+    "expo-dev-client": "~5.1.8",
+    "expo-linear-gradient": "~14.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -45,6 +46,9 @@
     "typescript": "~5.8.3",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~9.2.0"
+  },
+  "resolutions": {
+    "expo-linear-gradient": "~11.4.0"
   },
   "private": true
 }
