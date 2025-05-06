@@ -7,21 +7,51 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const [counters, setCounters] = useState([
-    { id: "1", name: "Aces (20 Points)", value: 0, pointValue: 20 },
-    { id: "2", name: "Kings (10 Points)", value: 0, pointValue: 10 },
-    { id: "3", name: "Queens (10 Points)", value: 0, pointValue: 10 },
-    { id: "4", name: "Jacks (10 Points)", value: 0, pointValue: 10 },
-    { id: "5", name: "Tens (10 Points)", value: 0, pointValue: 10 },
-    { id: "6", name: "Nines (10 Points)", value: 0, pointValue: 10 },
-    { id: "7", name: "Eights (10 Points)", value: 0, pointValue: 10 },
-    { id: "8", name: "Sevens (5 Points)", value: 0, pointValue: 5 },
-    { id: "9", name: "Sixes (5 Points)", value: 0, pointValue: 5 },
-    { id: "10", name: "Fives (5 Points)", value: 0, pointValue: 5 },
-    { id: "11", name: "Fours (5 Points)", value: 0, pointValue: 5 },
-    { id: "12", name: "Black Threes (0 Points)", value: 0, pointValue: 0 },
-    { id: "13", name: "Red Threes (-500 Points)", value: 0, pointValue: -500 },
-    { id: "14", name: "Twos (20 Points)", value: 0, pointValue: 20 },
-    { id: "15", name: "Jokers (50 Points)", value: 0, pointValue: 50 },
+    { id: "1", name: "Aces", points: "(20 Points)", value: 0, pointValue: 20 },
+    { id: "2", name: "Kings", points: "(10 Points)", value: 0, pointValue: 10 },
+    {
+      id: "3",
+      name: "Queens",
+      points: "(10 Points)",
+      value: 0,
+      pointValue: 10,
+    },
+    { id: "4", name: "Jacks", points: "(10 Points)", value: 0, pointValue: 10 },
+    { id: "5", name: "Tens", points: "(10 Points)", value: 0, pointValue: 10 },
+    { id: "6", name: "Nines", points: "(10 Points)", value: 0, pointValue: 10 },
+    {
+      id: "7",
+      name: "Eights",
+      points: "(10 Points)",
+      value: 0,
+      pointValue: 10,
+    },
+    { id: "8", name: "Sevens", points: "(5 Points)", value: 0, pointValue: 5 },
+    { id: "9", name: "Sixes", points: "(5 Points)", value: 0, pointValue: 5 },
+    { id: "10", name: "Fives", points: "(5 Points)", value: 0, pointValue: 5 },
+    { id: "11", name: "Fours", points: "(5 Points)", value: 0, pointValue: 5 },
+    {
+      id: "12",
+      name: "Black Threes",
+      points: "(0 Points)",
+      value: 0,
+      pointValue: 0,
+    },
+    {
+      id: "13",
+      name: "Red Threes",
+      points: "(-500 Points)",
+      value: 0,
+      pointValue: -500,
+    },
+    { id: "14", name: "Twos", points: "(20 Points)", value: 0, pointValue: 20 },
+    {
+      id: "15",
+      name: "Jokers",
+      points: "(50 Points)",
+      value: 0,
+      pointValue: 50,
+    },
   ]);
 
   // useEffect(() => {
@@ -54,6 +84,7 @@ export default function Index() {
         card={item.id}
         name={item.name}
         value={item.value}
+        points={item.points}
         updateCombinedState={updateCombinedState}
       />
     </View>

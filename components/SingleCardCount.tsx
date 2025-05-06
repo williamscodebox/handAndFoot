@@ -6,6 +6,7 @@ export default function SingleCardCount({
   card,
   value,
   name,
+  points,
   updateCombinedState,
 }) {
   // const [counter, setCounter] = useState(0);
@@ -30,7 +31,10 @@ export default function SingleCardCount({
   };
   return (
     <View style={styles.buttons}>
-      <Text style={styles.nameStyle}>{name}</Text>
+      <View style={styles.name}>
+        <Text style={styles.nameStyle}>{name}</Text>
+        <Text style={styles.nameStyle}>{points}</Text>
+      </View>
       <View style={styles.rightButtons}>
         <TouchableOpacity style={styles.button} onPress={handleClick2}>
           <AntDesign name="minus" size={24} color="black" />
@@ -46,13 +50,13 @@ export default function SingleCardCount({
 
 const styles = StyleSheet.create({
   buttons: {
+    flex: 1,
     flexDirection: "row",
-    flexShrink: 1,
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
     margin: 0,
-    marginRight: 0,
+    marginRight: -5,
     padding: 0,
     paddingLeft: 0,
     paddingRight: 20,
@@ -60,23 +64,28 @@ const styles = StyleSheet.create({
   rightButtons: {
     flexDirection: "row",
     alignItems: "center",
-    flexShrink: 1,
+    marginRight: 20,
   },
   button: {
     fontSize: 30,
     color: "black",
     fontWeight: "bold",
-    height: 45,
-    width: 45,
+    height: 40,
+    width: 40,
     // marginTop: 10,
     // marginBottom: 10,
     padding: 10,
-    margin: 10,
+    margin: 5,
     borderRadius: 8,
     backgroundColor: "#AEEEF0",
     elevation: 5,
     alignItems: "center",
     justifyContent: "center",
+  },
+  name: {
+    marginLeft: 20,
+    flexDirection: "column",
+    gap: 0,
   },
   // container: {
   //   flex: 1,
@@ -89,12 +98,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     color: "black",
-    marginVertical: 10,
   },
   counterValue: {
-    fontSize: 30,
+    fontSize: 22,
     fontWeight: "bold",
     color: "black",
     textAlign: "center",
+    width: 35,
   },
 });
