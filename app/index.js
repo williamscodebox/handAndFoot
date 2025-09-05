@@ -1,22 +1,26 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 
 export default function HomeScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <LinearGradient colors={["#fef2f2", "#eff6ff"]} style={styles.container}>
-        <Text style={{ fontSize: 24, fontWeight: "bold" }}>
-          Welcome to Hand & Foot
-        </Text>
-      </LinearGradient>
-    </View>
+    <LinearGradient
+      pointerEvents={"none"}
+      style={styles.container}
+      start={{ x: 0, y: 1 }}
+      end={{ x: 0, y: 0 }}
+      colors={["#fef2f2", "#eff6ff"]}
+    >
+      <Text style={{ fontSize: 24, fontWeight: "bold" }}>
+        Welcome to Hand & Foot
+      </Text>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: 40,
     justifyContent: "center",
     alignItems: "center",
   },
