@@ -45,3 +45,6 @@ app-example
 # *.json
 # app.json
 # eas.json
+
+# misc
+hfTemp.txt
