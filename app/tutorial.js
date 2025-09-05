@@ -1,5 +1,4 @@
-import Feather from "@expo/vector-icons/Feather";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import { Feather, FontAwesome5 } from "@expo/vector-icons";
 import { useState } from "react";
 import {
   ScrollView,
@@ -9,30 +8,87 @@ import {
   View,
 } from "react-native";
 
-const tutorialSections = [
-  {
-    id: 1,
-    title: "Introduction",
-    icon: () => <Feather name="book-open" size={24} color="#4B5563" />,
-    content:
-      "Welcome to Hand & Foot! Learn the basics of this classic card game.",
-  },
-  {
-    id: 2,
-    title: "Players",
-    icon: () => <Feather name="users" size={24} color="#4B5563" />,
-    content: "Hand & Foot is best played with 4–6 players in teams.",
-  },
-  {
-    id: 3,
-    title: "Gameplay",
-    icon: () => <FontAwesome5 name="random" size={24} color="#4B5563" />,
-    content: "Understand the rules, turns, and scoring system.",
-  },
-];
+// const tutorialSections = [
+//   {
+//     id: 1,
+//     title: "Introduction",
+//     icon: () => <Feather name="book-open" size={24} color="#4B5563" />,
+//     content:
+//       "Welcome to Hand & Foot! Learn the basics of this classic card game.",
+//   },
+//   {
+//     id: 2,
+//     title: "Players",
+//     icon: () => <Feather name="users" size={24} color="#4B5563" />,
+//     content: "Hand & Foot is best played with 4–6 players in teams.",
+//   },
+//   {
+//     id: 3,
+//     title: "Gameplay",
+//     icon: () => <FontAwesome5 name="random" size={24} color="#4B5563" />,
+//     content: "Understand the rules, turns, and scoring system.",
+//   },
+// ];
 
 export default function TutorialPage() {
   const [currentSection, setCurrentSection] = useState(0);
+  const tutorialSections = [
+    {
+      id: "overview",
+      title: "Game Overview",
+      icon: () => <Feather name="book-open" size={24} color="#4B5563" />,
+      content: (
+        <View style={styles.sectionContainer}>
+          <View style={styles.introBox}>
+            <Text style={styles.heading}>What is Hand and Foot?</Text>
+            <Text style={styles.paragraph}>
+              Hand and Foot is a North American card game similar to Canasta.
+              Players work to create melds (sets of cards) and earn points. The
+              game is called "Hand and Foot" because each player is dealt two
+              sets of cards: the "hand" (played first) and the "foot" (played
+              after the hand is exhausted).
+            </Text>
+          </View>
+
+          <View style={styles.cardGrid}>
+            <View style={[styles.card, styles.greenCard]}>
+              <View style={styles.cardHeader}>
+                <Feather name="users" size={20} color="#065F46" />
+                <Text style={styles.cardTitle}>Players</Text>
+              </View>
+              <Text style={styles.cardText}>2–6 players (best with 4)</Text>
+              <Text style={styles.cardSubtext}>
+                Can be played in partnerships
+              </Text>
+            </View>
+
+            <View style={[styles.card, styles.redCard]}>
+              <View style={styles.cardHeader}>
+                <FontAwesome5 name="random" size={20} color="#991B1B" />
+                <Text style={styles.cardTitle}>Decks</Text>
+              </View>
+              <Text style={styles.cardText}>4–7 standard decks + jokers</Text>
+              <Text style={styles.cardSubtext}>
+                Number depends on player count
+              </Text>
+            </View>
+          </View>
+        </View>
+      ),
+    },
+    {
+      id: 2,
+      title: "Players",
+      icon: () => <Feather name="users" size={24} color="#4B5563" />,
+      content: "Hand & Foot is best played with 4–6 players in teams.",
+    },
+    {
+      id: 3,
+      title: "Gameplay",
+      icon: () => <FontAwesome5 name="random" size={24} color="#4B5563" />,
+      content: "Understand the rules, turns, and scoring system.",
+    },
+  ];
   const currentTutorial = tutorialSections[currentSection];
 
   const nextSection = () => {
