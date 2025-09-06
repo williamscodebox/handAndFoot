@@ -8,28 +8,6 @@ import {
   View,
 } from "react-native";
 
-// const tutorialSections = [
-//   {
-//     id: 1,
-//     title: "Introduction",
-//     icon: () => <Feather name="book-open" size={24} color="#4B5563" />,
-//     content:
-//       "Welcome to Hand & Foot! Learn the basics of this classic card game.",
-//   },
-//   {
-//     id: 2,
-//     title: "Players",
-//     icon: () => <Feather name="users" size={24} color="#4B5563" />,
-//     content: "Hand & Foot is best played with 4–6 players in teams.",
-//   },
-//   {
-//     id: 3,
-//     title: "Gameplay",
-//     icon: () => <FontAwesome5 name="random" size={24} color="#4B5563" />,
-//     content: "Understand the rules, turns, and scoring system.",
-//   },
-// ];
-
 export default function TutorialPage() {
   const [currentSection, setCurrentSection] = useState(0);
   const tutorialSections = [
