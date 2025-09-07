@@ -1,4 +1,5 @@
 import { EvilIcons, Feather, FontAwesome5, Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text, View } from "react-native";
 import Card from "../components/Card";
 import CardContent from "../components/CardContent";
@@ -12,16 +13,22 @@ export const tutorialData = [
     icon: (props) => <Feather name="book-open" size={24} {...props} />,
     content: () => (
       <View style={styles.sectionContainer}>
-        <View style={styles.introBox}>
-          <Text style={styles.heading}>What is Hand and Foot?</Text>
-          <Text style={styles.paragraph}>
-            Hand and Foot is a North American card game similar to Canasta.
-            Players work to create melds (sets of cards) and earn points. The
-            game is called "Hand and Foot" because each player is dealt two sets
-            of cards: the "hand" (played first) and the "foot" (played after the
-            hand is exhausted).
-          </Text>
-        </View>
+        <LinearGradient
+          colors={["#eff6ff", "#f5f3ff"]} // blue-50 to purple-50
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+        >
+          <View style={styles.introBox}>
+            <Text style={styles.heading}>What is Hand and Foot?</Text>
+            <Text style={styles.paragraph}>
+              Hand and Foot is a North American card game similar to Canasta.
+              Players work to create melds (sets of cards) and earn points. The
+              game is called "Hand and Foot" because each player is dealt two
+              sets of cards: the "hand" (played first) and the "foot" (played
+              after the hand is exhausted).
+            </Text>
+          </View>
+        </LinearGradient>
 
         <View style={styles.cardGrid}>
           <View style={[styles.card, styles.greenCard]}>
