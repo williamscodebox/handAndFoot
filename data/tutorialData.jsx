@@ -1,5 +1,9 @@
 import { EvilIcons, Feather, FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
+import Card from "../components/Card";
+import CardContent from "../components/CardContent";
+import CardHeader from "../components/CardHeader";
+import CardTitle from "../components/CardTitle";
 
 export const tutorialData = [
   {
@@ -76,7 +80,7 @@ export const tutorialData = [
         </View>
 
         <View className="grid md:grid-cols-3 gap-4">
-          {/* <Card className="text-center">
+          <Card className="text-center">
             <CardHeader>
               <CardTitle className="text-lg">Step 1</CardTitle>
             </CardHeader>
@@ -99,7 +103,7 @@ export const tutorialData = [
             <CardContent>
               <p>Place remaining cards as stock pile</p>
             </CardContent>
-          </Card> */}
+          </Card>
         </View>
       </View>
     ),
