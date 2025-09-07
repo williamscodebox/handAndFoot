@@ -82,7 +82,7 @@ export const tutorialData = [
         <View className="flex flex-col md:flex-row gap-4">
           <Card className="text-center">
             <CardHeader>
-              <CardTitle className="text-lg">Step 1</CardTitle>
+              <CardTitle className="text-lg text-green-300">Step 1</CardTitle>
             </CardHeader>
             <CardContent>
               <Text>Deal 11 cards to each player's hand</Text>
