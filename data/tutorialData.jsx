@@ -9,7 +9,7 @@ export const tutorialData = [
   {
     id: "overview",
     title: "Game Overview",
-    icon: () => <Feather name="book-open" size={24} color="#4B5563" />,
+    icon: (props) => <Feather name="book-open" size={24} {...props} />,
     content: () => (
       <View style={styles.sectionContainer}>
         <View style={styles.introBox}>
@@ -52,7 +52,7 @@ export const tutorialData = [
   {
     id: "setup",
     title: "Game Setup",
-    icon: () => <Ionicons name="shuffle-sharp" size={24} color="black" />,
+    icon: (props) => <Ionicons name="shuffle-sharp" size={24} {...props} />,
     content: () => (
       <View className="space-y-6">
         <View className="bg-blue-50 p-6 rounded-xl">
@@ -111,7 +111,7 @@ export const tutorialData = [
   {
     id: "melds",
     title: "Making Melds",
-    icon: () => <Feather name="target" size={24} color="black" />,
+    icon: (props) => <Feather name="target" size={24} {...props} />,
     content: () => (
       <View className="space-y-6">
         <View className="bg-purple-50 p-6 rounded-xl">
@@ -180,7 +180,7 @@ export const tutorialData = [
   {
     id: "scoring",
     title: "Scoring System",
-    icon: () => <EvilIcons name="trophy" size={24} color="black" />,
+    icon: (props) => <EvilIcons name="trophy" size={24} {...props} />,
     content: () => (
       <View className="space-y-6">
         <View className="bg-yellow-50 p-6 rounded-xl">

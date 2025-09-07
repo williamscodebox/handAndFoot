@@ -1,4 +1,5 @@
 import { Feather } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
 import {
   ScrollView,
@@ -28,79 +29,109 @@ export default function TutorialPage() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Learn Hand & Foot</Text>
-      <Text style={styles.subtitle}>
-        Master the classic card game with our interactive tutorial
-      </Text>
+      <LinearGradient
+        colors={["#ebf8ff", "#ffffff", "#f3e8ff"]} // from-blue-50 via-white to-purple-50
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        className="flex-1 p-4 md:p-8"
+      >
+        <View className="max-w-4xl mx-auto">
+          <View className="text-center mb-8">
+            <Text style={styles.title}>Learn Hand & Foot</Text>
+            <Text style={styles.subtitle}>
+              Master the classic card game with our interactive tutorial
+            </Text>
 
-      {/* Progress Bar */}
-      <View style={styles.progressContainer}>
-        <Text style={styles.progressText}>
-          {currentSection + 1} of {tutorialSections.length}
-        </Text>
-        <View style={styles.progressBar}>
-          <View
-            style={[
-              styles.progressFill,
-              {
-                width: `${
-                  ((currentSection + 1) / tutorialSections.length) * 100
-                }%`,
-              },
-            ]}
-          />
+            {/* Progress Bar */}
+            <View style={styles.progressContainer}>
+              <Text style={styles.progressText}>
+                {currentSection + 1} of {tutorialSections.length}
+              </Text>
+              <View style={styles.progressBar}>
+                <View
+                  style={[
+                    styles.progressFill,
+                    {
+                      width: `${
+                        ((currentSection + 1) / tutorialSections.length) * 100
+                      }%`,
+                    },
+                  ]}
+                />
+              </View>
+            </View>
+
+            {/* Navigation Tabs */}
+            <View style={styles.tabContainer}>
+              {tutorialSections.map((section, index) => {
+                const isActive = index === currentSection;
+                const iconColor = isActive ? "white" : "black";
+                return (
+                  <TouchableOpacity
+                    key={section.id}
+                    style={[
+                      styles.tabButton,
+                      isActive && styles.tabButtonActive,
+                    ]}
+                    onPress={() => setCurrentSection(index)}
+                  >
+                    {section.icon({ color: iconColor })}
+                    <Text style={[styles.tabText, { color: iconColor }]}>
+                      {section.title}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+
+            {/* Current Section Content */}
+            <View style={styles.card}>
+              <LinearGradient
+                colors={["#2563eb", "#9333ea"]} // from-blue-600 to-purple-600
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                className="rounded-t-lg p-4"
+              >
+                <View style={styles.cardHeader}>
+                  {currentTutorial.icon({ color: "white" })}
+                  <Text style={styles.cardTitle}>{currentTutorial.title}</Text>
+                </View>
+              </LinearGradient>
+              <Text style={styles.cardContent}>
+                {currentTutorial.content()}
+              </Text>
+            </View>
+
+            {/* Navigation Buttons */}
+            <View style={styles.navButtons}>
+              <TouchableOpacity
+                onPress={prevSection}
+                disabled={currentSection === 0}
+                style={[
+                  styles.navButton,
+                  currentSection === 0 && styles.disabled,
+                ]}
+              >
+                <Feather name="chevron-left" size={20} color="#4B5563" />
+                <Text>Previous</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={nextSection}
+                disabled={currentSection === tutorialSections.length - 1}
+                style={[
+                  styles.navButton,
+                  currentSection === tutorialSections.length - 1 &&
+                    styles.disabled,
+                ]}
+              >
+                <Text>Next</Text>
+                <Feather name="chevron-right" size={20} color="#4B5563" />
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
-      </View>
-
-      {/* Navigation Tabs */}
-      <View style={styles.tabContainer}>
-        {tutorialSections.map((section, index) => (
-          <TouchableOpacity
-            key={section.id}
-            style={[
-              styles.tabButton,
-              index === currentSection && styles.tabButtonActive,
-            ]}
-            onPress={() => setCurrentSection(index)}
-          >
-            {section.icon()}
-            <Text style={styles.tabText}>{section.title}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-
-      {/* Current Section Content */}
-      <View style={styles.card}>
-        <View style={styles.cardHeader}>
-          {currentTutorial.icon()}
-          <Text style={styles.cardTitle}>{currentTutorial.title}</Text>
-        </View>
-        <Text style={styles.cardContent}>{currentTutorial.content()}</Text>
-      </View>
-
-      {/* Navigation Buttons */}
-      <View style={styles.navButtons}>
-        <TouchableOpacity
-          onPress={prevSection}
-          disabled={currentSection === 0}
-          style={[styles.navButton, currentSection === 0 && styles.disabled]}
-        >
-          <Feather name="chevron-left" size={20} color="#4B5563" />
-          <Text>Previous</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={nextSection}
-          disabled={currentSection === tutorialSections.length - 1}
-          style={[
-            styles.navButton,
-            currentSection === tutorialSections.length - 1 && styles.disabled,
-          ]}
-        >
-          <Text>Next</Text>
-          <Feather name="chevron-right" size={20} color="#4B5563" />
-        </TouchableOpacity>
-      </View>
+      </LinearGradient>
     </ScrollView>
   );
 }
@@ -161,7 +192,7 @@ const styles = StyleSheet.create({
   },
   tabText: {
     marginLeft: 6,
-    color: "#111827",
+    color: "#FFFFFF",
   },
   card: {
     backgroundColor: "#FFFFFF",
@@ -179,7 +210,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginLeft: 8,
-    color: "#111827",
+    color: "#FFFFFF",
   },
   cardContent: {
     fontSize: 16,
