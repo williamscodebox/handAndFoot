@@ -33,7 +33,7 @@ export const tutorialData = [
         <View className="flex flex-col md:flex-row gap-6">
           <Card className="bg-green-50 border border-green-200">
             <CardHeader>
-              <CardTitle className="text-green-800 flex items-center gap-8">
+              <CardTitle className="flex flex-row items-center gap-2 m-5">
                 <View>
                   <Feather
                     name="users"
@@ -42,11 +42,11 @@ export const tutorialData = [
                     // className="w-7 h-7 pr-5"
                   />
                 </View>
-                <Text className="pl-5">Players</Text>
+                <Text className="text-green-800">Players</Text>
               </CardTitle>
             </CardHeader>
-            <View className="flex flex-col p-4">
-              <CardContent>
+            <View className="flex flex-col">
+              <CardContent className="ml-5 mb-8 gap-1">
                 <Text>2-6 players (best with 4)</Text>
                 <Text className="text-sm text-green-700 mt-2">
                   Can be played in partnerships

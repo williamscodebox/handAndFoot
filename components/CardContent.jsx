@@ -1,14 +1,11 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 
 const StyledView = View;
-const StyledText = Text;
 
-export default function CardContent({ children }) {
+export default function CardContent({ children, className = "" }) {
   return (
-    <StyledView>
-      <StyledText className="text-sm text-gray-600 text-center">
-        {children}
-      </StyledText>
+    <StyledView className={`text-sm text-gray-600 text-center ${className}`}>
+      {children}
     </StyledView>
   );
 }

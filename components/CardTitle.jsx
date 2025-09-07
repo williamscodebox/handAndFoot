@@ -1,11 +1,11 @@
-import { Text } from "react-native";
+import { View } from "react-native";
 
-const StyledText = Text;
+const StyledView = View;
 
 export default function CardTitle({ children, className = "" }) {
   return (
-    <StyledText className={`text-lg font-semibold text-gray-800 ${className}`}>
+    <StyledView className={`text-lg font-semibold text-gray-800 ${className}`}>
       {children}
-    </StyledText>
+    </StyledView>
   );
 }
