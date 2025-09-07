@@ -1,8 +1,10 @@
 import { LinearGradient } from "expo-linear-gradient";
+// import { verifyInstallation } from "nativewind";
 import { StyleSheet, Text } from "react-native";
 import "./../global.css";
 
 export default function HomeScreen() {
+  // verifyInstallation(); // Run inside component
   return (
     <LinearGradient
       pointerEvents={"none"}

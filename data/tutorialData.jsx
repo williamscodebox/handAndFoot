@@ -85,7 +85,7 @@ export const tutorialData = [
               <CardTitle className="text-lg">Step 1</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Deal 11 cards to each player's hand</p>
+              <Text>Deal 11 cards to each player's hand</Text>
             </CardContent>
           </Card>
           <Card className="text-center">
@@ -93,7 +93,7 @@ export const tutorialData = [
               <CardTitle className="text-lg">Step 2</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Deal 11 cards to each player's foot</p>
+              <Text>Deal 11 cards to each player's foot</Text>
             </CardContent>
           </Card>
           <Card className="text-center">
@@ -101,7 +101,7 @@ export const tutorialData = [
               <CardTitle className="text-lg">Step 3</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Place remaining cards as stock pile</p>
+              <Text>Place remaining cards as stock pile</Text>
             </CardContent>
           </Card>
         </View>
