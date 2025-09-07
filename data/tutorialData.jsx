@@ -1,4 +1,4 @@
-import { EvilIcons, Feather, FontAwesome5, Ionicons } from "@expo/vector-icons";
+import { EvilIcons, Feather, Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text, View } from "react-native";
 import Card from "../components/Card";
@@ -12,11 +12,12 @@ export const tutorialData = [
     title: "Game Overview",
     icon: (props) => <Feather name="book-open" size={24} {...props} />,
     content: () => (
-      <View style={styles.sectionContainer}>
+      <View className="space-y-6">
         <LinearGradient
           colors={["#eff6ff", "#f5f3ff"]} // blue-50 to purple-50
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
+          className="p-6 rounded-xl overflow-hidden mb-6"
         >
           <View style={styles.introBox}>
             <Text style={styles.heading}>What is Hand and Foot?</Text>
@@ -55,16 +56,29 @@ export const tutorialData = [
             </View>
           </Card>
 
-          <View style={[styles.card, styles.redCard]}>
-            <View style={styles.cardHeader}>
-              <FontAwesome5 name="random" size={20} color="#991B1B" />
-              <Text style={styles.cardTitle}>Decks</Text>
+          <Card className="bg-red-100 border border-red-200">
+            <CardHeader>
+              <CardTitle className="flex flex-row items-center gap-2 m-5">
+                <View>
+                  <Ionicons
+                    name="shuffle-sharp"
+                    size={20}
+                    color="#065F46"
+                    // className="w-7 h-7 pr-5"
+                  />
+                </View>
+                <Text className="text-red-800">Decks</Text>
+              </CardTitle>
+            </CardHeader>
+            <View className="flex flex-col">
+              <CardContent className="ml-5 mb-8 gap-1">
+                <Text>4–7 standard decks + jokers</Text>
+                <Text className="text-sm text-red-700 mt-2">
+                  Number depends on player count
+                </Text>
+              </CardContent>
             </View>
-            <Text style={styles.cardText}>4–7 standard decks + jokers</Text>
-            <Text style={styles.cardSubtext}>
-              Number depends on player count
-            </Text>
-          </View>
+          </Card>
         </View>
       </View>
     ),

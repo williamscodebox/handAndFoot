@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import Card from "../components/Card";
+import CardContent from "../components/CardContent";
 import { tutorialData } from "../data/tutorialData";
 
 export default function TutorialPage() {
@@ -85,22 +87,27 @@ export default function TutorialPage() {
             </View>
 
             {/* Current Section Content */}
-            <View style={styles.card}>
+            <Card
+              style={styles.card}
+              className="shadow-xl mb-8"
+              rounded-xl
+              overflow-hidden
+            >
               <LinearGradient
                 colors={["#2563eb", "#9333ea"]} // from-blue-600 to-purple-600
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
-                className="rounded-t-lg p-4"
+                className="rounded-t-lg p-4 overflow-hidden"
               >
-                <View style={styles.cardHeader}>
+                <View style={styles.cardHeader} className="mt-3">
                   {currentTutorial.icon({ color: "white" })}
                   <Text style={styles.cardTitle}>{currentTutorial.title}</Text>
                 </View>
               </LinearGradient>
-              <Text style={styles.cardContent}>
+              <CardContent className="p-8">
                 {currentTutorial.content()}
-              </Text>
-            </View>
+              </CardContent>
+            </Card>
 
             {/* Navigation Buttons */}
             <View style={styles.navButtons}>

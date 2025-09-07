@@ -19,6 +19,7 @@ const InteropView = cssInterop(View, {
       margin: true,
       borderRadius: true,
       color: true,
+      overflow: true,
     },
   },
 });
