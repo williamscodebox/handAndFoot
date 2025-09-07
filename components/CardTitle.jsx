@@ -1,6 +1,7 @@
+import { styled } from "nativewind";
 import { Text } from "react-native";
 
-const StyledText = Text;
+const StyledText = styled(Text);
 
 export default function CardTitle({ children, className = "" }) {
   return (

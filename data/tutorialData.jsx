@@ -79,7 +79,7 @@ export const tutorialData = [
           </View>
         </View>
 
-        <View className="grid md:grid-cols-3 gap-4">
+        <View className="flex flex-col md:flex-row gap-4">
           <Card className="text-center">
             <CardHeader>
               <CardTitle className="text-lg">Step 1</CardTitle>

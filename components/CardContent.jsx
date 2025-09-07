@@ -1,7 +1,8 @@
+import { styled } from "nativewind";
 import { Text, View } from "react-native";
 
-const StyledView = View;
-const StyledText = Text;
+const StyledView = styled(View);
+const StyledText = styled(Text);
 
 export default function CardContent({ children }) {
   return (
