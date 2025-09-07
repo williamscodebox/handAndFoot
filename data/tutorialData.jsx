@@ -30,17 +30,30 @@ export const tutorialData = [
           </View>
         </LinearGradient>
 
-        <View style={styles.cardGrid}>
-          <View style={[styles.card, styles.greenCard]}>
-            <View style={styles.cardHeader}>
-              <Feather name="users" size={20} color="#065F46" />
-              <Text style={styles.cardTitle}>Players</Text>
+        <View className="flex flex-col md:flex-row gap-6">
+          <Card className="bg-green-50 border border-green-200">
+            <CardHeader>
+              <CardTitle className="text-green-800 flex items-center gap-8">
+                <View>
+                  <Feather
+                    name="users"
+                    size={20}
+                    color="#065F46"
+                    // className="w-7 h-7 pr-5"
+                  />
+                </View>
+                <Text className="pl-5">Players</Text>
+              </CardTitle>
+            </CardHeader>
+            <View className="flex flex-col p-4">
+              <CardContent>
+                <Text>2-6 players (best with 4)</Text>
+                <Text className="text-sm text-green-700 mt-2">
+                  Can be played in partnerships
+                </Text>
+              </CardContent>
             </View>
-            <Text style={styles.cardText}>2–6 players (best with 4)</Text>
-            <Text style={styles.cardSubtext}>
-              Can be played in partnerships
-            </Text>
-          </View>
+          </Card>
 
           <View style={[styles.card, styles.redCard]}>
             <View style={styles.cardHeader}>

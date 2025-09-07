@@ -12,12 +12,18 @@ const InteropView = cssInterop(View, {
     nativeStyleToProp: {
       // Add mappings only if you need special handling
       // For example: backgroundColor: true
+      backgroundColor: true,
+      borderColor: true,
+      border: true,
+      padding: true,
+      margin: true,
+      borderRadius: true,
       color: true,
     },
   },
 });
 
-const StyledView = View;
+// const StyledView = View;
 
 // export default function Card({ children, className = "" }) {
 //   return (
@@ -31,9 +37,7 @@ const StyledView = View;
 
 export default function Card({ children, className = "" }) {
   return (
-    <InteropView
-      className={`bg-white rounded-xl shadow-md p-4 m-2 ${className}`}
-    >
+    <InteropView className={` rounded-xl shadow-md p-4 m-2 ${className}`}>
       {children}
     </InteropView>
   );
