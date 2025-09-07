@@ -14,9 +14,9 @@ export default function HomeScreen() {
       <Text style={{ fontSize: 24, fontWeight: "bold" }}>
         Welcome to Hand & Foot
       </Text>
-      <Text className="text-xl font-bold text-blue-500">
+      {/* <Text className="text-xl font-bold text-blue-500">
         Welcome to NativeWind!
-      </Text>
+      </Text> */}
     </LinearGradient>
   );
 }

@@ -1,4 +1,4 @@
-import { Feather, FontAwesome5, Ionicons } from "@expo/vector-icons";
+import { EvilIcons, Feather, FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
 
 export const tutorialData = [
@@ -50,28 +50,32 @@ export const tutorialData = [
     title: "Game Setup",
     icon: () => <Ionicons name="shuffle-sharp" size={24} color="black" />,
     content: () => (
-      <div className="space-y-6">
-        <div className="bg-blue-50 p-6 rounded-xl">
-          <h3 className="text-xl font-semibold mb-4">Initial Deal</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h4 className="font-semibold text-blue-800 mb-2">Hand Cards</h4>
-              <p className="text-gray-700">
+      <View className="space-y-6">
+        <View className="bg-blue-50 p-6 rounded-xl">
+          <Text className="text-xl font-semibold mb-4">Initial Deal</Text>
+          <View className="flex flex-col md:flex-row gap-6">
+            <View>
+              <Text className="font-semibold text-blue-800 mb-2">
+                Hand Cards
+              </Text>
+              <Text className="text-gray-700">
                 Each player receives 11 cards face down. Keep these cards hidden
                 from other players.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-blue-800 mb-2">Foot Cards</h4>
-              <p className="text-gray-700">
+              </Text>
+            </View>
+            <View>
+              <Text className="font-semibold text-blue-800 mb-2">
+                Foot Cards
+              </Text>
+              <Text className="text-gray-700">
                 Each player receives 11 additional cards face down. Don't look
                 at these until your hand is empty!
-              </p>
-            </div>
-          </div>
-        </div>
+              </Text>
+            </View>
+          </View>
+        </View>
 
-        <div className="grid md:grid-cols-3 gap-4">
+        <View className="grid md:grid-cols-3 gap-4">
           {/* <Card className="text-center">
             <CardHeader>
               <CardTitle className="text-lg">Step 1</CardTitle>
@@ -96,15 +100,159 @@ export const tutorialData = [
               <p>Place remaining cards as stock pile</p>
             </CardContent>
           </Card> */}
-        </div>
-      </div>
+        </View>
+      </View>
     ),
   },
   {
-    id: 3,
-    title: "Gameplay",
-    icon: () => <FontAwesome5 name="random" size={24} color="#4B5563" />,
-    content: () => "Understand the rules, turns, and scoring system.",
+    id: "melds",
+    title: "Making Melds",
+    icon: () => <Feather name="target" size={24} color="black" />,
+    content: () => (
+      <View className="space-y-6">
+        <View className="bg-purple-50 p-6 rounded-xl">
+          <Text className="text-xl font-semibold mb-3">What are Melds?</Text>
+          <Text className="text-gray-700 mb-4">
+            Melds are sets of 3 or more cards of the same rank. You need melds
+            to score points and eventually "go out" to win the round.
+          </Text>
+        </View>
+
+        {/* <div className="grid gap-4">
+          <Card className="border-green-200">
+            <CardHeader>
+              <CardTitle className="text-green-800 flex items-center gap-2">
+                <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                Clean Books (Natural Melds)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-2">7 or more cards of the same rank with NO wildcards</p>
+              <div className="flex gap-1 mb-2">
+                {[...Array(7)].map((_, i) => (
+                  <div key={i} className="w-8 h-12 bg-red-100 border border-red-300 rounded flex items-center justify-center text-xs">
+                    K♥
+                  </div>
+                ))}
+              </div>
+              <Badge className="bg-green-100 text-green-800">+500 points</Badge>
+            </CardContent>
+          </Card>
+
+          <Card className="border-yellow-200">
+            <CardHeader>
+              <CardTitle className="text-yellow-800 flex items-center gap-2">
+                <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                Dirty Books (Mixed Melds)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-2">7 or more cards with wildcards (2s, Jokers)</p>
+              <div className="flex gap-1 mb-2">
+                {['K♥', 'K♠', '2♣', 'K♦', 'JKR', 'K♣', 'K♥'].map((card, i) => (
+                  <div key={i} className={`w-8 h-12 border rounded flex items-center justify-center text-xs ${
+                    card.includes('2') || card === 'JKR' ? 'bg-yellow-100 border-yellow-300' : 'bg-red-100 border-red-300'
+                  }`}>
+                    {card}
+                  </div>
+                ))}
+              </div>
+              <Badge className="bg-yellow-100 text-yellow-800">+300 points</Badge>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="bg-gray-50 p-4 rounded-lg">
+          <h4 className="font-semibold mb-2">Wildcard Rules</h4>
+          <ul className="space-y-1 text-sm text-gray-700">
+            <li>• 2s and Jokers are wildcards</li>
+            <li>• Maximum of 3 wildcards per meld</li>
+            <li>• Wildcards cannot outnumber natural cards</li>
+          </ul>
+        </div> */}
+      </View>
+    ),
+  },
+  {
+    id: "scoring",
+    title: "Scoring System",
+    icon: () => <EvilIcons name="trophy" size={24} color="black" />,
+    content: () => (
+      <View className="space-y-6">
+        <View className="bg-yellow-50 p-6 rounded-xl">
+          <Text className="text-xl font-semibold mb-3">How Points Work</Text>
+          <Text className="text-gray-700">
+            Points come from melds, individual cards, and bonuses. At the end of
+            each round, subtract points for cards left in hand.
+          </Text>
+        </View>
+
+        {/* <div className="grid md:grid-cols-2 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-green-700">Card Values</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <div className="flex justify-between">
+                <span>Jokers</span>
+                <Badge>50 points</Badge>
+              </div>
+              <div className="flex justify-between">
+                <span>2s (wildcards)</span>
+                <Badge>20 points</Badge>
+              </div>
+              <div className="flex justify-between">
+                <span>Aces</span>
+                <Badge>20 points</Badge>
+              </div>
+              <div className="flex justify-between">
+                <span>8, 9, 10, J, Q, K</span>
+                <Badge>10 points</Badge>
+              </div>
+              <div className="flex justify-between">
+                <span>4, 5, 6, 7</span>
+                <Badge>5 points</Badge>
+              </div>
+              <div className="flex justify-between">
+                <span>Black 3s</span>
+                <Badge>5 points</Badge>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-blue-700">Bonuses</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <div className="flex justify-between">
+                <span>Clean Book</span>
+                <Badge className="bg-green-100 text-green-800">+500</Badge>
+              </div>
+              <div className="flex justify-between">
+                <span>Dirty Book</span>
+                <Badge className="bg-yellow-100 text-yellow-800">+300</Badge>
+              </div>
+              <div className="flex justify-between">
+                <span>Going Out</span>
+                <Badge className="bg-purple-100 text-purple-800">+100</Badge>
+              </div>
+              <div className="flex justify-between">
+                <span>Red 3s (each)</span>
+                <Badge className="bg-red-100 text-red-800">+100</Badge>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+          <h4 className="font-semibold text-red-800 mb-2">Penalty: Cards Left in Hand/Foot</h4>
+          <p className="text-red-700 text-sm">
+            At round end, subtract the point value of all cards remaining in your hand and foot from your score.
+          </p>
+        </div> */}
+      </View>
+    ),
   },
 ];
 
