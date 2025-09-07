@@ -72,7 +72,7 @@ export const tutorialData = [
         </div>
 
         <div className="grid md:grid-cols-3 gap-4">
-          <Card className="text-center">
+          {/* <Card className="text-center">
             <CardHeader>
               <CardTitle className="text-lg">Step 1</CardTitle>
             </CardHeader>
@@ -95,7 +95,7 @@ export const tutorialData = [
             <CardContent>
               <p>Place remaining cards as stock pile</p>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </div>
     ),

@@ -48,3 +48,8 @@ app-example
 
 # misc
 hfTemp.txt
+
+# tailwind
+babel.config.js
+metro.config.js
+tailwind.config.js

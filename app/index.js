@@ -1,5 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text } from "react-native";
+import "./../global.css";
 
 export default function HomeScreen() {
   return (
@@ -12,6 +13,9 @@ export default function HomeScreen() {
     >
       <Text style={{ fontSize: 24, fontWeight: "bold" }}>
         Welcome to Hand & Foot
+      </Text>
+      <Text className="text-xl font-bold text-blue-500">
+        Welcome to NativeWind!
       </Text>
     </LinearGradient>
   );
