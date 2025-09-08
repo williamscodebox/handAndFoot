@@ -110,30 +110,71 @@ export default function TutorialPage() {
             </Card>
 
             {/* Navigation Buttons */}
-            <View style={styles.navButtons}>
+
+            <View className="flex flex-row justify-between items-center">
               <TouchableOpacity
                 onPress={prevSection}
                 disabled={currentSection === 0}
+                className="flex flex-row items-center gap-2 px-4 pr-6 py-4 rounded-xl overflow-hidden"
                 style={[
                   styles.navButton,
                   currentSection === 0 && styles.disabled,
                 ]}
               >
-                <Feather name="chevron-left" size={20} color="#4B5563" />
-                <Text>Previous</Text>
+                <Feather
+                  name="chevron-left"
+                  size={20}
+                  color={currentSection === 0 ? "#4B5563" : "#FFFFFF"}
+                />
+                <Text
+                  style={[
+                    styles.textButton,
+                    currentSection === 0 && styles.buttonDisabled,
+                  ]}
+                >
+                  Previous
+                </Text>
               </TouchableOpacity>
+
+              <View className="flex flex-row gap-2">
+                {tutorialSections.map((_, index) => (
+                  <View
+                    key={index}
+                    className={`w-2 h-2 rounded-full ${
+                      index === currentSection ? "bg-blue-600" : "bg-gray-300"
+                    }`}
+                  />
+                ))}
+              </View>
 
               <TouchableOpacity
                 onPress={nextSection}
                 disabled={currentSection === tutorialSections.length - 1}
+                className="flex flex-row items-center gap-2 px-4 pl-10 pr-8 py-4 rounded-xl overflow-hidden"
                 style={[
                   styles.navButton,
                   currentSection === tutorialSections.length - 1 &&
                     styles.disabled,
                 ]}
               >
-                <Text>Next</Text>
-                <Feather name="chevron-right" size={20} color="#4B5563" />
+                <Text
+                  style={[
+                    styles.textButton,
+                    currentSection === tutorialSections.length - 1 &&
+                      styles.buttonDisabled,
+                  ]}
+                >
+                  Next
+                </Text>
+                <Feather
+                  name="chevron-right"
+                  size={20}
+                  color={
+                    currentSection === tutorialSections.length - 1
+                      ? "#4B5563"
+                      : "#FFFFFF"
+                  }
+                />
               </TouchableOpacity>
             </View>
           </View>
@@ -228,13 +269,21 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   navButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 10,
-    backgroundColor: "#E5E7EB",
     borderRadius: 6,
+    overflow: "hidden",
+    backgroundColor: "#6366F1",
   },
   disabled: {
     opacity: 0.5,
+    backgroundColor: "#E5E7EB",
+  },
+  gradient: {
+    borderRadius: 12,
+  },
+  textButton: {
+    color: "white",
+  },
+  buttonDisabled: {
+    color: "black",
   },
 });

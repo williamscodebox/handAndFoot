@@ -53,3 +53,9 @@ hfTemp.txt
 babel.config.js
 metro.config.js
 tailwind.config.js
+
+#android
+.idea/
+
+# git
+.git/
