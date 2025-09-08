@@ -38,7 +38,7 @@ const InteropView = cssInterop(View, {
 
 export default function Card({ children, className = "" }) {
   return (
-    <InteropView className={` rounded-xl shadow-md p-4 m-2 ${className}`}>
+    <InteropView className={`rounded-xl shadow-md p-2 m-2 ${className}`}>
       {children}
     </InteropView>
   );

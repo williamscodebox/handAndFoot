@@ -17,11 +17,11 @@ export const tutorialData = [
           colors={["#eff6ff", "#f5f3ff"]} // blue-50 to purple-50
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
-          className="p-6 rounded-xl overflow-hidden mb-6"
+          className="p-6 rounded-xl overflow-hidden mb-6 mt-2"
         >
           <View style={styles.introBox}>
             <Text style={styles.heading}>What is Hand and Foot?</Text>
-            <Text style={styles.paragraph}>
+            <Text style={styles.paragraph} className="leading-relaxed">
               Hand and Foot is a North American card game similar to Canasta.
               Players work to create melds (sets of cards) and earn points. The
               game is called "Hand and Foot" because each player is dealt two
@@ -43,13 +43,15 @@ export const tutorialData = [
                     // className="w-7 h-7 pr-5"
                   />
                 </View>
-                <Text className="text-green-800">Players</Text>
+                <Text className="text-green-800 text-2xl font-bold">
+                  Players
+                </Text>
               </CardTitle>
             </CardHeader>
             <View className="flex flex-col">
               <CardContent className="ml-5 mb-8 gap-1">
-                <Text>2-6 players (best with 4)</Text>
-                <Text className="text-sm text-green-700 mt-2">
+                <Text className="text-lg">2-6 players (best with 4)</Text>
+                <Text className="text-lg text-green-700 mt-2">
                   Can be played in partnerships
                 </Text>
               </CardContent>
@@ -67,13 +69,13 @@ export const tutorialData = [
                     // className="w-7 h-7 pr-5"
                   />
                 </View>
-                <Text className="text-red-800">Decks</Text>
+                <Text className="text-red-800 text-2xl font-bold">Decks</Text>
               </CardTitle>
             </CardHeader>
             <View className="flex flex-col">
               <CardContent className="ml-5 mb-8 gap-1">
-                <Text>4–7 standard decks + jokers</Text>
-                <Text className="text-sm text-red-700 mt-2">
+                <Text text-lg>4–7 standard decks + jokers</Text>
+                <Text className="text-lg text-red-700 mt-2">
                   Number depends on player count
                 </Text>
               </CardContent>
@@ -309,13 +311,14 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   heading: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 8,
+    marginBottom: 16,
   },
   paragraph: {
-    fontSize: 16,
+    fontSize: 18,
     color: "#4B5563",
+    marginTop: 10,
   },
   cardGrid: {
     flexDirection: "row",

@@ -87,31 +87,30 @@ export default function TutorialPage() {
             </View>
 
             {/* Current Section Content */}
-            <Card
-              style={styles.card}
-              className="shadow-xl mb-8"
-              rounded-xl
-              overflow-hidden
-            >
-              <LinearGradient
-                colors={["#2563eb", "#9333ea"]} // from-blue-600 to-purple-600
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
-                className="rounded-t-lg p-4 overflow-hidden"
-              >
-                <View style={styles.cardHeader} className="mt-3">
-                  {currentTutorial.icon({ color: "white" })}
-                  <Text style={styles.cardTitle}>{currentTutorial.title}</Text>
-                </View>
-              </LinearGradient>
-              <CardContent className="p-8">
-                {currentTutorial.content()}
-              </CardContent>
-            </Card>
+            <View className="-m-2 mb-3">
+              <Card style={styles.card} className="mb-8">
+                <LinearGradient
+                  colors={["#2563eb", "#9333ea"]} // from-blue-600 to-purple-600
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+                  className="rounded-t-lg p-4 overflow-hidden"
+                >
+                  <View style={styles.cardHeader} className="mt-3">
+                    {currentTutorial.icon({ color: "white" })}
+                    <Text style={styles.cardTitle}>
+                      {currentTutorial.title}
+                    </Text>
+                  </View>
+                </LinearGradient>
+                <CardContent className="p-8 mt-1">
+                  {currentTutorial.content()}
+                </CardContent>
+              </Card>
+            </View>
 
             {/* Navigation Buttons */}
 
-            <View className="flex flex-row justify-between items-center">
+            <View className="flex flex-row justify-between items-center mb-6">
               <TouchableOpacity
                 onPress={prevSection}
                 disabled={currentSection === 0}
@@ -187,23 +186,24 @@ export default function TutorialPage() {
 const styles = StyleSheet.create({
   container: {
     padding: 0,
-    backgroundColor: "#F3F4F6",
   },
   title: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: "bold",
     color: "#111827",
-    marginBottom: 8,
+    marginTop: 8,
+    marginBottom: 16,
     textAlign: "center",
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: 20,
     color: "#6B7280",
     textAlign: "center",
     marginBottom: 20,
   },
   progressContainer: {
-    marginBottom: 20,
+    marginTop: 6,
+    marginBottom: 32,
   },
   progressText: {
     fontSize: 14,
@@ -244,10 +244,8 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: "#FFFFFF",
-    borderRadius: 8,
-    padding: 16,
     marginBottom: 20,
-    elevation: 2,
+    elevation: 1,
   },
   cardHeader: {
     flexDirection: "row",
