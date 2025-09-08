@@ -186,7 +186,7 @@ export default function TutorialPage() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 0,
     backgroundColor: "#F3F4F6",
   },
   title: {
