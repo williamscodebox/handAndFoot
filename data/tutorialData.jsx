@@ -185,58 +185,74 @@ export const tutorialData = [
           </Text>
         </View>
 
-        {/* <div className="grid gap-4">
+        <View className="grid gap-4">
           <Card className="border-green-200">
             <CardHeader>
               <CardTitle className="text-green-800 flex items-center gap-2">
-                <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-                Clean Books (Natural Melds)
+                <View className="w-4 h-4 bg-green-500 rounded-full"></View>
+                <Text>Clean Books (Natural Melds)</Text>
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="mb-2">7 or more cards of the same rank with NO wildcards</p>
-              <div className="flex gap-1 mb-2">
+              <Text className="mb-2">
+                7 or more cards of the same rank with NO wildcards
+              </Text>
+              <View className="flex gap-1 mb-2">
                 {[...Array(7)].map((_, i) => (
-                  <div key={i} className="w-8 h-12 bg-red-100 border border-red-300 rounded flex items-center justify-center text-xs">
+                  <Text
+                    key={i}
+                    className="w-8 h-12 bg-red-100 border border-red-300 rounded flex items-center justify-center text-xs"
+                  >
                     K♥
-                  </div>
+                  </Text>
                 ))}
-              </div>
-              <Badge className="bg-green-100 text-green-800">+500 points</Badge>
+              </View>
+              {/* <Badge className="bg-green-100 text-green-800">+500 points</Badge> */}
             </CardContent>
           </Card>
 
           <Card className="border-yellow-200">
             <CardHeader>
               <CardTitle className="text-yellow-800 flex items-center gap-2">
-                <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
-                Dirty Books (Mixed Melds)
+                <View className="w-4 h-4 bg-yellow-500 rounded-full"></View>
+                <Text>Dirty Books (Mixed Melds)</Text>
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="mb-2">7 or more cards with wildcards (2s, Jokers)</p>
-              <div className="flex gap-1 mb-2">
-                {['K♥', 'K♠', '2♣', 'K♦', 'JKR', 'K♣', 'K♥'].map((card, i) => (
-                  <div key={i} className={`w-8 h-12 border rounded flex items-center justify-center text-xs ${
-                    card.includes('2') || card === 'JKR' ? 'bg-yellow-100 border-yellow-300' : 'bg-red-100 border-red-300'
-                  }`}>
-                    {card}
-                  </div>
-                ))}
-              </div>
-              <Badge className="bg-yellow-100 text-yellow-800">+300 points</Badge>
+              <Text className="mb-2">
+                7 or more cards with wildcards (2s, Jokers)
+              </Text>
+              <View className="flex gap-1 mb-2">
+                {["K♥", "K♠", "2♣", "K♦", "JKR", "K♣", "K♥"].map(
+                  (card, i) => (
+                    <Text
+                      key={i}
+                      className={`w-8 h-12 border rounded flex items-center justify-center text-xs ${
+                        card.includes("2") || card === "JKR"
+                          ? "bg-yellow-100 border-yellow-300"
+                          : "bg-red-100 border-red-300"
+                      }`}
+                    >
+                      {card}
+                    </Text>
+                  )
+                )}
+              </View>
+              {/* <Badge className="bg-yellow-100 text-yellow-800">
+                +300 points
+              </Badge> */}
             </CardContent>
           </Card>
-        </div>
+        </View>
 
-        <div className="bg-gray-50 p-4 rounded-lg">
-          <h4 className="font-semibold mb-2">Wildcard Rules</h4>
-          <ul className="space-y-1 text-sm text-gray-700">
-            <li>• 2s and Jokers are wildcards</li>
-            <li>• Maximum of 3 wildcards per meld</li>
-            <li>• Wildcards cannot outnumber natural cards</li>
-          </ul>
-        </div> */}
+        <View className="bg-gray-50 p-4 rounded-lg">
+          <Text className="font-semibold mb-2">Wildcard Rules</Text>
+          <View className="space-y-1 text-sm text-gray-700">
+            <Text>• 2s and Jokers are wildcards</Text>
+            <Text>• Maximum of 3 wildcards per meld</Text>
+            <Text>• Wildcards cannot outnumber natural cards</Text>
+          </View>
+        </View>
       </View>
     ),
   },
@@ -254,70 +270,77 @@ export const tutorialData = [
           </Text>
         </View>
 
-        {/* <div className="grid md:grid-cols-2 gap-6">
+        <View className="grid md:grid-cols-2 gap-6">
           <Card>
             <CardHeader>
-              <CardTitle className="text-green-700">Card Values</CardTitle>
+              <CardTitle className="text-green-700">
+                <Text>Card Values</Text>
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <div className="flex justify-between">
-                <span>Jokers</span>
-                <Badge>50 points</Badge>
-              </div>
-              <div className="flex justify-between">
-                <span>2s (wildcards)</span>
-                <Badge>20 points</Badge>
-              </div>
-              <div className="flex justify-between">
-                <span>Aces</span>
-                <Badge>20 points</Badge>
-              </div>
-              <div className="flex justify-between">
-                <span>8, 9, 10, J, Q, K</span>
-                <Badge>10 points</Badge>
-              </div>
-              <div className="flex justify-between">
-                <span>4, 5, 6, 7</span>
-                <Badge>5 points</Badge>
-              </div>
-              <div className="flex justify-between">
-                <span>Black 3s</span>
-                <Badge>5 points</Badge>
-              </div>
+              <View className="flex justify-between">
+                <Text>Jokers</Text>
+                {/* <Badge>50 points</Badge> */}
+              </View>
+              <View className="flex justify-between">
+                <Text>2s (wildcards)</Text>
+                {/* <Badge>20 points</Badge> */}
+              </View>
+              <View className="flex justify-between">
+                <Text>Aces</Text>
+                {/* <Badge>20 points</Badge> */}
+              </View>
+              <View className="flex justify-between">
+                <Text>8, 9, 10, J, Q, K</Text>
+                {/* <Badge>10 points</Badge> */}
+              </View>
+              <View className="flex justify-between">
+                <Text>4, 5, 6, 7</Text>
+                {/* <Badge>5 points</Badge> */}
+              </View>
+              <View className="flex justify-between">
+                <Text>Black 3s</Text>
+                {/* <Badge>5 points</Badge> */}
+              </View>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-blue-700">Bonuses</CardTitle>
+              <CardTitle className="text-blue-700">
+                <Text>Bonuses</Text>
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <div className="flex justify-between">
-                <span>Clean Book</span>
-                <Badge className="bg-green-100 text-green-800">+500</Badge>
-              </div>
-              <div className="flex justify-between">
-                <span>Dirty Book</span>
-                <Badge className="bg-yellow-100 text-yellow-800">+300</Badge>
-              </div>
-              <div className="flex justify-between">
-                <span>Going Out</span>
-                <Badge className="bg-purple-100 text-purple-800">+100</Badge>
-              </div>
-              <div className="flex justify-between">
-                <span>Red 3s (each)</span>
-                <Badge className="bg-red-100 text-red-800">+100</Badge>
-              </div>
+              <View className="flex justify-between">
+                <Text>Clean Book</Text>
+                {/* <Badge className="bg-green-100 text-green-800">+500</Badge> */}
+              </View>
+              <View className="flex justify-between">
+                <Text>Dirty Book</Text>
+                {/* <Badge className="bg-yellow-100 text-yellow-800">+300</Badge> */}
+              </View>
+              <View className="flex justify-between">
+                <Text>Going Out</Text>
+                {/* <Badge className="bg-purple-100 text-purple-800">+100</Badge> */}
+              </View>
+              <View className="flex justify-between">
+                <Text>Red 3s (each)</Text>
+                {/* <Badge className="bg-red-100 text-red-800">+100</Badge> */}
+              </View>
             </CardContent>
           </Card>
-        </div>
+        </View>
 
-        <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-          <h4 className="font-semibold text-red-800 mb-2">Penalty: Cards Left in Hand/Foot</h4>
-          <p className="text-red-700 text-sm">
-            At round end, subtract the point value of all cards remaining in your hand and foot from your score.
-          </p>
-        </div> */}
+        <View className="bg-red-50 p-4 rounded-lg border border-red-200">
+          <Text className="font-semibold text-red-800 mb-2">
+            Penalty: Cards Left in Hand/Foot
+          </Text>
+          <Text className="text-red-700 text-sm">
+            At round end, subtract the point value of all cards remaining in
+            your hand and foot from your score.
+          </Text>
+        </View>
       </View>
     ),
   },
