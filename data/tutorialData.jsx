@@ -58,7 +58,7 @@ export const tutorialData = [
             </View>
           </Card>
 
-          <Card className="bg-red-100 border border-red-200">
+          <Card className="bg-fuchsia-100 border border-fuchsia-200">
             <CardHeader>
               <CardTitle className="flex flex-row items-center gap-2 m-5">
                 <View>
@@ -69,13 +69,15 @@ export const tutorialData = [
                     // className="w-7 h-7 pr-5"
                   />
                 </View>
-                <Text className="text-red-800 text-2xl font-bold">Decks</Text>
+                <Text className="text-fuchsia-800 text-2xl font-bold">
+                  Decks
+                </Text>
               </CardTitle>
             </CardHeader>
             <View className="flex flex-col">
               <CardContent className="ml-5 mb-8 gap-1">
                 <Text text-lg>4–7 standard decks + jokers</Text>
-                <Text className="text-lg text-red-700 mt-2">
+                <Text className="text-lg text-fuchsia-700 mt-2">
                   Number depends on player count
                 </Text>
               </CardContent>
@@ -91,59 +93,78 @@ export const tutorialData = [
     icon: (props) => <Ionicons name="shuffle-sharp" size={24} {...props} />,
     content: () => (
       <View className="space-y-6">
-        <View className="bg-blue-50 p-6 rounded-xl">
-          <Text className="text-xl font-semibold mb-4">Initial Deal</Text>
-          <View className="flex flex-col md:flex-row gap-6">
-            <View>
-              <Text className="font-semibold text-blue-800 mb-2">
-                Hand Cards
-              </Text>
-              <Text className="text-gray-700">
-                Each player receives 11 cards face down. Keep these cards hidden
-                from other players.
-              </Text>
-            </View>
-            <View>
-              <Text className="font-semibold text-blue-800 mb-2">
-                Foot Cards
-              </Text>
-              <Text className="text-gray-700">
-                Each player receives 11 additional cards face down. Don't look
-                at these until your hand is empty!
-              </Text>
+        <LinearGradient
+          colors={["#eff6ff", "#f5f3ff"]} // blue-50 to purple-50
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          className="p-6 rounded-xl overflow-hidden mb-6 mt-2"
+        >
+          <View style={styles.introBox}>
+            <Text style={styles.heading}>Initial Deal</Text>
+            <View className="flex flex-col md:flex-row gap-6">
+              <View>
+                <Text className="font-semibold text-blue-800 mb-2 text-xl">
+                  Hand Cards
+                </Text>
+                <Text className="text-gray-700 text-xl leading-relaxed">
+                  Each player receives 11 cards face down. Keep these cards
+                  hidden from other players.
+                </Text>
+              </View>
+              <View>
+                <Text className="font-semibold text-blue-800 mb-2 text-xl">
+                  Foot Cards
+                </Text>
+                <Text className="text-gray-700 text-xl leading-relaxed">
+                  Each player receives 11 additional cards face down. Don't look
+                  at these until your hand is empty!
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
+        </LinearGradient>
 
         <View className="flex flex-col md:flex-row gap-4">
-          <Card className="text-center">
-            <CardHeader>
-              <CardTitle className="text-lg text-green-300">
-                <Text>Step 1</Text>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Text>Deal 11 cards to each player's hand</Text>
-            </CardContent>
-          </Card>
-          <Card className="text-center">
+          <Card className="text-center bg-indigo-50 border border-indigo-100">
             <CardHeader>
               <CardTitle className="text-lg">
-                <Text>Step 2</Text>
+                <Text className="text-center font-bold text-xl pt-6 pb-2">
+                  Step 1
+                </Text>
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <Text>Deal 11 cards to each player's foot</Text>
+              <Text className="text-center text-xl m-4 leading-relaxed pb-4">
+                Deal 11 cards to each player's hand
+              </Text>
             </CardContent>
           </Card>
-          <Card className="text-center">
+          <Card className="text-center bg-slate-50 border border-slate-100">
             <CardHeader>
               <CardTitle className="text-lg">
-                <Text>Step 3</Text>
+                <Text className="text-center font-bold text-xl pt-6 pb-2">
+                  Step 2
+                </Text>
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <Text>Place remaining cards as stock pile</Text>
+              <Text className="text-center text-xl m-4 leading-relaxed pb-4">
+                Deal 11 cards to each player's foot
+              </Text>
+            </CardContent>
+          </Card>
+          <Card className="text-center bg-amber-50 border border-amber-100">
+            <CardHeader>
+              <CardTitle className="text-lg">
+                <Text className="text-center font-bold text-xl pt-6 pb-2">
+                  Step 3
+                </Text>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Text className="text-center text-xl m-4 leading-relaxed pb-4">
+                Place remaining cards as stock pile
+              </Text>
             </CardContent>
           </Card>
         </View>
