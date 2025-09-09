@@ -12,11 +12,3 @@ create marketing video 5 min length -- current at 0:00:50
 
 Goal to have Tutorial finished 09-09-25
 Have Home Screen finished 09-12-25
-
-
-Badge example usage 
-
-<View style={{ position: 'relative' }}>
-  <Feather name="bell" size={24} color="#4B5563" />
-  <Badge value={3} />
-</View>
