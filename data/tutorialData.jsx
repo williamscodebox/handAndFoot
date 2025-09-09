@@ -331,18 +331,26 @@ export const tutorialData = [
             </CardHeader>
             <CardContent className="space-y-2">
               <View className="flex flex-row justify-between mr-5 pb-2">
-                <Text className="text-xl font-bold">Jokers</Text>
+                <Text className="text-xl font-semibold">Jokers</Text>
                 <Badge
                   value={"50 points"}
-                  color={"black"}
+                  color={"#374151"}
                   textColor={"white"}
                   height={30}
                   width={90}
+                  borderRadius={20}
                 />
               </View>
-              <View className="flex justify-between">
-                <Text>2s (wildcards)</Text>
-                {/* <Badge>20 points</Badge> */}
+              <View className="flex flex-row justify-between mr-5 pb-2">
+                <Text className="text-xl font-semibold">2s (wildcards)</Text>
+                <Badge
+                  value={"20 points"}
+                  color={"#374151"}
+                  textColor={"white"}
+                  height={30}
+                  width={90}
+                  borderRadius={20}
+                />
               </View>
               <View className="flex justify-between">
                 <Text>Aces</Text>
