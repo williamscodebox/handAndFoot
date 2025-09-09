@@ -154,7 +154,7 @@ export const tutorialData = [
               </Text>
             </CardContent>
           </Card>
-          <Card className="text-center bg-amber-50 border border-amber-100">
+          <Card className="text-center bg-green-50 border border-green-100">
             <CardHeader>
               <CardTitle className="text-lg">
                 <Text className="text-center font-bold text-xl pt-6 pb-2">
@@ -220,7 +220,7 @@ export const tutorialData = [
                   (card, i) => (
                     <Text
                       key={i}
-                      className="w-8 h-12 bg-red-100 border border-red-300 rounded flex text-center items-center align-middle justify-center text-xs"
+                      className="w-8 h-12 bg-gray-100 border border-gray-300 rounded flex text-center items-center align-middle justify-center text-xs"
                     >
                       {card}
                     </Text>
@@ -240,26 +240,36 @@ export const tutorialData = [
             </CardContent>
           </Card>
 
-          <Card className="border-yellow-200">
+          <Card className="bg-white border border-yellow-200 p-6">
             <CardHeader>
-              <CardTitle className="text-yellow-800 flex items-center gap-2">
-                <View className="w-4 h-4 bg-yellow-500 rounded-full"></View>
-                <Text>Dirty Books (Mixed Melds)</Text>
+              <CardTitle className="flex">
+                <View className="flex flex-row gap-4">
+                  <View className="w-6 h-6 mt-3 bg-yellow-500 rounded-full"></View>
+                  <Text className="text-yellow-800 text-2xl font-bold">
+                    Dirty Books
+                  </Text>
+                </View>
+                <Text className="text-yellow-800 text-2xl font-bold ml-9 -mt-2">
+                  (Mixed Melds)
+                </Text>
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <Text className="mb-2">
+              <Text className="mt-4 pb-1 text-xl">
                 7 or more cards with wildcards (2s, Jokers)
               </Text>
-              <View className="flex gap-1 mb-2">
+              <Text className="my-4 pb-1 text-xl">
+                Another name for this is a black meld
+              </Text>
+              <View className="flex flex-row gap-2 mb-2">
                 {["K♥", "K♠", "2♣", "K♦", "JKR", "K♣", "K♥"].map(
                   (card, i) => (
                     <Text
                       key={i}
-                      className={`w-8 h-12 border rounded flex items-center justify-center text-xs ${
+                      className={`w-8 h-12 border rounded flex text-center align-middle items-center justify-center text-xs ${
                         card.includes("2") || card === "JKR"
                           ? "bg-yellow-100 border-yellow-300"
-                          : "bg-red-100 border-red-300"
+                          : "bg-gray-100 border-gray-300"
                       }`}
                     >
                       {card}
@@ -267,19 +277,28 @@ export const tutorialData = [
                   )
                 )}
               </View>
-              {/* <Badge className="bg-yellow-100 text-yellow-800">
-                +300 points
-              </Badge> */}
+              <View className="mt-6 pb-2">
+                <Badge
+                  value={"+ 300 points"}
+                  color={"#FEF9C3"}
+                  textColor={"#854D0E"}
+                  height={28}
+                  width={90}
+                  className="bg-yellow-100 text-yellow-800"
+                />
+              </View>
             </CardContent>
           </Card>
         </View>
 
-        <View className="bg-gray-50  rounded-lg">
-          <Text className="font-semibold mb-2">Wildcard Rules</Text>
-          <View className=" flex space-y-1 text-sm text-gray-700">
-            <Text>• 2s and Jokers are wildcards</Text>
-            <Text>• Maximum of 3 wildcards per meld</Text>
-            <Text>• Wildcards cannot outnumber natural cards</Text>
+        <View className="bg-gray-50  rounded-lg mt-8 p-6">
+          <Text className="font-bold text-2xl mb-4">Wildcard Rules</Text>
+          <View className=" flex space-y-1 gap-3 mb-2 text-sm text-gray-700">
+            <Text className="text-xl">2s and Jokers are wildcards</Text>
+            <Text className="text-xl">Maximum of 3 wildcards per meld</Text>
+            <Text className="text-xl">
+              Wildcards can not out number natural cards
+            </Text>
           </View>
         </View>
       </View>
