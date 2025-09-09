@@ -1,6 +1,7 @@
 import { EvilIcons, Feather, Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text, View } from "react-native";
+import Badge from "../components/Badge";
 import Card from "../components/Card";
 import CardContent from "../components/CardContent";
 import CardHeader from "../components/CardHeader";
@@ -177,37 +178,60 @@ export const tutorialData = [
     icon: (props) => <Feather name="target" size={24} {...props} />,
     content: () => (
       <View className="space-y-6">
-        <View className="bg-purple-50 p-6 rounded-xl">
-          <Text className="text-xl font-semibold mb-3">What are Melds?</Text>
-          <Text className="text-gray-700 mb-4">
-            Melds are sets of 3 or more cards of the same rank. You need melds
-            to score points and eventually "go out" to win the round.
-          </Text>
-        </View>
+        <LinearGradient
+          colors={["#eff6ff", "#f5f3ff"]} // blue-50 to purple-50
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          className="p-6 rounded-xl overflow-hidden mb-6 mt-2"
+        >
+          <View style={styles.introBox}>
+            <Text style={styles.heading}>What are Melds?</Text>
+            <Text style={styles.paragraph} className="leading-relaxed">
+              Melds are sets of 3 or more cards of the same rank. You need melds
+              to score points and eventually "go out" to win the round.
+            </Text>
+          </View>
+        </LinearGradient>
 
         <View className="grid gap-4">
-          <Card className="border-green-200">
+          <Card className="bg-white border border-green-200 p-6">
             <CardHeader>
-              <CardTitle className="text-green-800 flex items-center gap-2">
-                <View className="w-4 h-4 bg-green-500 rounded-full"></View>
-                <Text>Clean Books (Natural Melds)</Text>
+              <CardTitle className="text-green-800 flex flex-row items-center gap-4">
+                <View className="w-6 h-6 bg-green-500 rounded-full"></View>
+                <Text className="text-green-800 text-3xl font-bold">
+                  Clean Books (Natural Melds)
+                </Text>
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <Text className="mb-2">
+              <Text className="mt-4 pb-1 text-xl">
                 7 or more cards of the same rank with NO wildcards
               </Text>
-              <View className="flex gap-1 mb-2">
-                {[...Array(7)].map((_, i) => (
-                  <Text
-                    key={i}
-                    className="w-8 h-12 bg-red-100 border border-red-300 rounded flex items-center justify-center text-xs"
-                  >
-                    K♥
-                  </Text>
-                ))}
+              <Text className="my-4 pb-1 text-xl">
+                Another name for this is a red meld
+              </Text>
+              <View className="flex flex-row gap-3 mb-2">
+                {["K♥", "K♠", "K♥", "K♦", "K♣", "K♣", "K♥"].map(
+                  (card, i) => (
+                    <Text
+                      key={i}
+                      className="w-8 h-12 bg-red-100 border border-red-300 rounded flex text-center items-center align-middle justify-center text-xs"
+                    >
+                      {card}
+                    </Text>
+                  )
+                )}
               </View>
-              {/* <Badge className="bg-green-100 text-green-800">+500 points</Badge> */}
+              <View className="mt-6 pb-2">
+                <Badge
+                  value={"+ 500 points"}
+                  color={"#DCFCE7"}
+                  textColor={"green"}
+                  height={28}
+                  width={90}
+                  className="bg-green-100 text-green-800"
+                />
+              </View>
             </CardContent>
           </Card>
 
