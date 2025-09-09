@@ -102,7 +102,7 @@ export const tutorialData = [
         >
           <View style={styles.introBox}>
             <Text style={styles.heading}>Initial Deal</Text>
-            <View className="flex flex-col md:flex-row gap-6">
+            <View className="flex flex-col md:flex-row mt-3 gap-6">
               <View>
                 <Text className="font-semibold text-blue-800 mb-2 text-xl">
                   Hand Cards
@@ -310,25 +310,35 @@ export const tutorialData = [
     icon: (props) => <EvilIcons name="trophy" size={24} {...props} />,
     content: () => (
       <View className="space-y-6">
-        <View className="bg-yellow-50 p-6 rounded-xl">
-          <Text className="text-xl font-semibold mb-3">How Points Work</Text>
-          <Text className="text-gray-700">
-            Points come from melds, individual cards, and bonuses. At the end of
-            each round, subtract points for cards left in hand.
-          </Text>
+        <View style={styles.introBox}>
+          <View className="bg-yellow-50 mt-2 p-6 rounded-xl pb-10">
+            <Text style={styles.heading}>How Points Work</Text>
+            <Text style={styles.paragraph} className="leading-relaxed">
+              Points come from melds, individual cards, and bonuses. At the end
+              of each round, subtract points for cards left in hand.
+            </Text>
+          </View>
         </View>
 
         <View className="grid md:grid-cols-2 gap-6">
-          <Card>
+          <Card className="bg-white border border-gray-50 p-6">
             <CardHeader>
-              <CardTitle className="text-green-700">
-                <Text>Card Values</Text>
+              <CardTitle className="text-green-700 pb-4">
+                <Text className="text-green-700 text-3xl font-bold">
+                  Card Values
+                </Text>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <View className="flex justify-between">
-                <Text>Jokers</Text>
-                {/* <Badge>50 points</Badge> */}
+              <View className="flex flex-row justify-between mr-5 pb-2">
+                <Text className="text-xl font-bold">Jokers</Text>
+                <Badge
+                  value={"50 points"}
+                  color={"black"}
+                  textColor={"white"}
+                  height={30}
+                  width={90}
+                />
               </View>
               <View className="flex justify-between">
                 <Text>2s (wildcards)</Text>
@@ -353,7 +363,7 @@ export const tutorialData = [
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-white border border-gray-50 p-6">
             <CardHeader>
               <CardTitle className="text-blue-700">
                 <Text>Bonuses</Text>
@@ -405,7 +415,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 16,
+    marginBottom: 12,
   },
   paragraph: {
     fontSize: 18,
