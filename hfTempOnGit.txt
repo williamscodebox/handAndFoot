@@ -5,3 +5,5 @@ styling 281 - 377 needed
 
 CArd Components need creating
 styling to be worked on
+
+Badge needs to be created
