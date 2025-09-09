@@ -7,3 +7,5 @@ CArd Components need creating
 styling to be worked on
 
 Badge needs to be created
+
+create marketing video 5 min length -- current at 0:00:50
