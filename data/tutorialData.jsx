@@ -193,13 +193,18 @@ export const tutorialData = [
           </View>
         </LinearGradient>
 
-        <View className="grid gap-4">
+        <View className="flex flex-col md:flex-row gap-6">
           <Card className="bg-white border border-green-200 p-6">
             <CardHeader>
-              <CardTitle className="text-green-800 flex flex-row items-center gap-4">
-                <View className="w-6 h-6 bg-green-500 rounded-full"></View>
-                <Text className="text-green-800 text-3xl font-bold">
-                  Clean Books (Natural Melds)
+              <CardTitle className="flex">
+                <View className="flex flex-row gap-4">
+                  <View className="w-6 h-6 mt-3 bg-green-500 rounded-full"></View>
+                  <Text className="text-green-800 text-2xl font-bold">
+                    Clean Books
+                  </Text>
+                </View>
+                <Text className="text-green-800 text-2xl font-bold ml-9 -mt-2">
+                  (Natural Melds)
                 </Text>
               </CardTitle>
             </CardHeader>
@@ -210,7 +215,7 @@ export const tutorialData = [
               <Text className="my-4 pb-1 text-xl">
                 Another name for this is a red meld
               </Text>
-              <View className="flex flex-row gap-3 mb-2">
+              <View className="flex flex-row gap-2 mb-2">
                 {["K♥", "K♠", "K♥", "K♦", "K♣", "K♣", "K♥"].map(
                   (card, i) => (
                     <Text
@@ -269,9 +274,9 @@ export const tutorialData = [
           </Card>
         </View>
 
-        <View className="bg-gray-50 p-4 rounded-lg">
+        <View className="bg-gray-50  rounded-lg">
           <Text className="font-semibold mb-2">Wildcard Rules</Text>
-          <View className="space-y-1 text-sm text-gray-700">
+          <View className=" flex space-y-1 text-sm text-gray-700">
             <Text>• 2s and Jokers are wildcards</Text>
             <Text>• Maximum of 3 wildcards per meld</Text>
             <Text>• Wildcards cannot outnumber natural cards</Text>
