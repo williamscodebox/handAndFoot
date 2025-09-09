@@ -1,6 +1,7 @@
 import { Feather } from "@expo/vector-icons";
+import { useFocusEffect } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -16,21 +17,30 @@ export default function TutorialPage() {
   const [currentSection, setCurrentSection] = useState(0);
   const tutorialSections = tutorialData;
   const currentTutorial = tutorialSections[currentSection];
+  const scrollRef = useRef(null);
 
   const nextSection = () => {
     if (currentSection < tutorialSections.length - 1) {
       setCurrentSection(currentSection + 1);
+      scrollRef.current?.scrollTo({ y: 0, animated: true });
     }
   };
 
   const prevSection = () => {
     if (currentSection > 0) {
       setCurrentSection(currentSection - 1);
+      scrollRef.current?.scrollTo({ y: 0, animated: true });
     }
   };
 
+  useFocusEffect(
+    useCallback(() => {
+      setCurrentSection(0); // Reset to first section
+    }, [])
+  );
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView ref={scrollRef} contentContainerStyle={styles.container}>
       <LinearGradient
         colors={["#ebf8ff", "#ffffff", "#f3e8ff"]} // from-blue-50 via-white to-purple-50
         start={{ x: 0, y: 0 }}

@@ -220,7 +220,7 @@ export const tutorialData = [
                   (card, i) => (
                     <Text
                       key={i}
-                      className="w-8 h-12 bg-gray-100 border border-gray-300 rounded flex text-center items-center align-middle justify-center text-xs"
+                      className="w-8 h-12 bg-gray-100 border border-gray-400 rounded flex text-center items-center align-middle justify-center text-xs"
                     >
                       {card}
                     </Text>
@@ -256,7 +256,7 @@ export const tutorialData = [
             </CardHeader>
             <CardContent>
               <Text className="mt-4 pb-1 text-xl">
-                7 or more cards with wildcards (2s, Jokers)
+                7 or more cards of the same rank with wildcards (2s, Jokers)
               </Text>
               <Text className="my-4 pb-1 text-xl">
                 Another name for this is a black meld
@@ -268,8 +268,8 @@ export const tutorialData = [
                       key={i}
                       className={`w-8 h-12 border rounded flex text-center align-middle items-center justify-center text-xs ${
                         card.includes("2") || card === "JKR"
-                          ? "bg-yellow-100 border-yellow-300"
-                          : "bg-gray-100 border-gray-300"
+                          ? "bg-yellow-100 border-gray-400"
+                          : "bg-gray-100 border-gray-400"
                       }`}
                     >
                       {card}
@@ -321,7 +321,7 @@ export const tutorialData = [
         </View>
 
         <View className="grid md:grid-cols-2 gap-6">
-          <Card className="bg-white border border-gray-50 p-6">
+          <Card className="bg-white border border-gray-50 p-6 mt-4">
             <CardHeader>
               <CardTitle className="text-green-700 pb-4">
                 <Text className="text-green-700 text-3xl font-bold">
@@ -352,57 +352,104 @@ export const tutorialData = [
                   borderRadius={20}
                 />
               </View>
-              <View className="flex justify-between">
-                <Text>Aces</Text>
-                {/* <Badge>20 points</Badge> */}
+              <View className="flex flex-row justify-between mr-5 pb-2">
+                <Text className="text-xl font-semibold">Aces</Text>
+                <Badge
+                  value={"20 points"}
+                  color={"#374151"}
+                  textColor={"white"}
+                  height={30}
+                  width={90}
+                  borderRadius={20}
+                />
               </View>
-              <View className="flex justify-between">
-                <Text>8, 9, 10, J, Q, K</Text>
-                {/* <Badge>10 points</Badge> */}
+              <View className="flex flex-row justify-between mr-5 pb-2">
+                <Text className="text-xl font-semibold">8, 9, 10, J, Q, K</Text>
+                <Badge
+                  value={"10 points"}
+                  color={"#374151"}
+                  textColor={"white"}
+                  height={30}
+                  width={90}
+                  borderRadius={20}
+                />
               </View>
-              <View className="flex justify-between">
-                <Text>4, 5, 6, 7</Text>
-                {/* <Badge>5 points</Badge> */}
+              <View className="flex flex-row justify-between mr-5 pb-2">
+                <Text className="text-xl font-semibold">4, 5, 6, 7</Text>
+                <Badge
+                  value={"5 points"}
+                  color={"#374151"}
+                  textColor={"white"}
+                  height={30}
+                  width={90}
+                  borderRadius={20}
+                />
               </View>
-              <View className="flex justify-between">
-                <Text>Black 3s</Text>
-                {/* <Badge>5 points</Badge> */}
+              <View className="flex flex-row justify-between mr-5 pb-2">
+                <Text className="text-xl font-semibold">Black 3s</Text>
+                <Badge
+                  value={"5 points"}
+                  color={"#374151"}
+                  textColor={"white"}
+                  height={30}
+                  width={90}
+                  borderRadius={20}
+                />
+              </View>
+              <View className="flex flex-row justify-between mr-5 pb-2">
+                <Text className="text-xl font-semibold">Red 3s</Text>
+                <Badge
+                  value={"500 points"}
+                  color={"#EF4444"}
+                  textColor={"white"}
+                  height={30}
+                  width={90}
+                  borderRadius={20}
+                />
               </View>
             </CardContent>
           </Card>
 
           <Card className="bg-white border border-gray-50 p-6">
             <CardHeader>
-              <CardTitle className="text-blue-700">
-                <Text>Bonuses</Text>
+              <CardTitle className="text-blue-700 pb-4">
+                <Text className="text-blue-700 text-3xl font-bold">
+                  Bonuses
+                </Text>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <View className="flex justify-between">
-                <Text>Clean Book</Text>
-                {/* <Badge className="bg-green-100 text-green-800">+500</Badge> */}
+              <View className="flex flex-row justify-between mr-5 pb-2">
+                <Text className="text-xl font-semibold">Clean Book</Text>
+                <Badge
+                  value={"+ 500 points"}
+                  color={"#DCFCE7"}
+                  textColor={"black"}
+                  height={30}
+                  width={90}
+                  borderRadius={20}
+                />
               </View>
-              <View className="flex justify-between">
-                <Text>Dirty Book</Text>
-                {/* <Badge className="bg-yellow-100 text-yellow-800">+300</Badge> */}
-              </View>
-              <View className="flex justify-between">
-                <Text>Going Out</Text>
-                {/* <Badge className="bg-purple-100 text-purple-800">+100</Badge> */}
-              </View>
-              <View className="flex justify-between">
-                <Text>Red 3s (each)</Text>
-                {/* <Badge className="bg-red-100 text-red-800">+100</Badge> */}
+              <View className="flex flex-row justify-between mr-5 pb-2">
+                <Text className="text-xl font-semibold">Dirty Book</Text>
+                <Badge
+                  value={"+ 300 points"}
+                  color={"#FEF9C3"}
+                  textColor={"black"}
+                  height={30}
+                  width={90}
+                  borderRadius={20}
+                />
               </View>
             </CardContent>
           </Card>
         </View>
 
-        <View className="bg-red-50 p-4 rounded-lg border border-red-200">
-          <Text className="font-semibold text-red-800 mb-2">
-            Penalty: Cards Left in Hand/Foot
+        <View className="bg-red-50 p-8 rounded-lg border border-red-200 mt-8">
+          <Text className="text-2xl font-semibold text-red-800 mb-4">
+            Penalty:Cards Left in Hand/Foot
           </Text>
-          <Text className="text-red-700 text-sm">
+          <Text className="text-red-700 text-xl leading-relaxed">
             At round end, subtract the point value of all cards remaining in
             your hand and foot from your score.
           </Text>
