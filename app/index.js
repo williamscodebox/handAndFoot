@@ -1,3 +1,4 @@
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
 // import { createPageUrl } from "@/utils";
@@ -50,25 +51,36 @@ export default function HomeScreen() {
       end={{ x: 0, y: 0 }}
       colors={["#fef2f2", "#eff6ff"]}
     >
-      <View className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50 p-4 md:p-8">
+      <View className="min-h-screen p-4 md:p-8">
         <View className="max-w-7xl mx-auto">
           {/* Hero Section */}
-          <View className="text-center mb-12">
-            <View className="inline-flex items-center gap-3 mb-4">
-              <View className="w-16 h-16 bg-gradient-to-br from-red-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-xl">
-                {/* <Spade className="w-8 h-8 text-white" /> */}
-              </View>
-            </View>
-            <Text className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Hand & Foot
-            </Text>
-            <Text className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Learn the classic card game and keep perfect scores with friends
-              and family
-            </Text>
+          {/* <View className="text-center mb-12"> */}
+          <View style={styles.heroSection}>
+            <LinearGradient
+              colors={["#DC2626", "#2563EB"]} // from-red-600 to-blue-600
+              start={{ x: 0, y: 0 }} // top-left
+              end={{ x: 1, y: 1 }} // bottom-right
+              style={styles.iconWrapper}
+            >
+              {/* <View className="w-16 h-16 bg-gradient-to-br from-red-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-xl"> */}
+              <MaterialCommunityIcons
+                name="cards-spade-outline"
+                size={24}
+                color="white"
+              />
+              {/* </View> */}
+            </LinearGradient>
+          </View>
+          <Text className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Hand & Foot
+          </Text>
+          <Text className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Learn the classic card game and keep perfect scores with friends and
+            family
+          </Text>
 
-            <View className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              {/* <Link to={createPageUrl("NewGame")}>
+          <View className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            {/* <Link to={createPageUrl("NewGame")}>
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
@@ -77,7 +89,7 @@ export default function HomeScreen() {
                   Start New Game
                 </Button>
               </Link> */}
-              {/* <Link to={createPageUrl("Tutorial")}>
+            {/* <Link to={createPageUrl("Tutorial")}>
                 <Button
                   size="lg"
                   variant="outline"
@@ -87,8 +99,8 @@ export default function HomeScreen() {
                   Learn the Rules
                 </Button>
               </Link> */}
-            </View>
           </View>
+          {/* </View> */}
 
           {/* Stats Grid */}
           {/* <View className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -289,10 +301,35 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  heroSection: {
+    alignItems: "center",
+    marginBottom: 48,
+  },
+  iconWrapper: {
+    width: 64,
+    height: 64,
+    borderRadius: 16,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 4,
+  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     color: "#1f2937", // gray-800
+  },
+  gradient: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
 
