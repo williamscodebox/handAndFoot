@@ -13,7 +13,13 @@ import { useEffect, useState } from "react";
 //   Spade
 // } from "lucide-react";
 import { Link } from "expo-router";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import "./../global.css";
 
 export default function HomeScreen() {
@@ -45,62 +51,67 @@ export default function HomeScreen() {
   const topPlayer = players[0];
 
   return (
-    <LinearGradient
-      pointerEvents={"none"}
-      style={styles.container}
-      start={{ x: 0, y: 1 }}
-      end={{ x: 0, y: 0 }}
-      colors={["#fef2f2", "#eff6ff"]}
-    >
-      <View className="min-h-screen p-4 md:p-8">
-        <View className="max-w-7xl mx-auto">
-          {/* Hero Section */}
-          {/* <View className="text-center mb-12"> */}
-          <View style={styles.heroSection}>
-            <LinearGradient
-              colors={["#DC2626", "#2563EB"]} // from-red-600 to-blue-600
-              start={{ x: 0, y: 0 }} // top-left
-              end={{ x: 1, y: 1 }} // bottom-right
-              style={styles.iconWrapper}
-            >
-              {/* <View className="w-16 h-16 bg-gradient-to-br from-red-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-xl"> */}
-              <MaterialCommunityIcons
-                name="cards-spade-outline"
-                size={24}
-                color="white"
-              />
-              {/* </View> */}
-            </LinearGradient>
-          </View>
-          <Text className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Hand & Foot
-          </Text>
-          <Text className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Learn the classic card game and keep perfect scores with friends and
-            family
-          </Text>
+    <ScrollView keyboardShouldPersistTaps="handled">
+      <LinearGradient
+        pointerEvents={"none"}
+        style={styles.container}
+        start={{ x: 0, y: 1 }}
+        end={{ x: 0, y: 0 }}
+        colors={["#fef2f2", "#eff6ff"]}
+      >
+        <View className="min-h-screen p-4 md:p-8">
+          <View className="max-w-7xl mx-auto">
+            {/* Hero Section */}
+            {/* <View className="text-center mb-12"> */}
+            <View style={styles.heroSection}>
+              <LinearGradient
+                colors={["#DC2626", "#2563EB"]} // from-red-600 to-blue-600
+                start={{ x: 0, y: 0 }} // top-left
+                end={{ x: 1, y: 1 }} // bottom-right
+                style={styles.iconWrapper}
+              >
+                {/* <View className="w-16 h-16 bg-gradient-to-br from-red-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-xl"> */}
+                <MaterialCommunityIcons
+                  name="cards-spade-outline"
+                  size={24}
+                  color="white"
+                />
+                {/* </View> */}
+              </LinearGradient>
+            </View>
+            <Text className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Hand & Foot
+            </Text>
+            <Text className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Learn the classic card game and keep perfect scores with friends
+              and family
+            </Text>
 
-          <View className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link href="/NewGame" asChild>
-              <TouchableOpacity activeOpacity={0.8}>
-                <LinearGradient
-                  colors={["#DC2626", "#B91C1C"]} // red-600 to red-700
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 0 }}
-                  style={styles.button}
-                >
-                  <Feather
-                    name="play"
-                    size={20}
-                    color="white"
-                    style={{ marginRight: 12 }}
-                  />
-                  <Text style={styles.buttonText}>Start New Game</Text>
-                </LinearGradient>
-              </TouchableOpacity>
-            </Link>
+            <View className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Link href="/newgame">
+                <Text>Go to New Game</Text>
+              </Link>
 
-            {/* <Link to={createPageUrl("NewGame")}>
+              <Link href="/app/newgame" asChild>
+                <TouchableOpacity activeOpacity={0.8}>
+                  <LinearGradient
+                    colors={["#DC2626", "#B91C1C"]} // red-600 to red-700
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={styles.button}
+                  >
+                    <Feather
+                      name="play"
+                      size={20}
+                      color="white"
+                      style={{ marginRight: 12 }}
+                    />
+                    <Text style={styles.buttonText}>Start New Game</Text>
+                  </LinearGradient>
+                </TouchableOpacity>
+              </Link>
+
+              {/* <Link to={createPageUrl("NewGame")}>
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
@@ -110,7 +121,7 @@ export default function HomeScreen() {
                 </Button>
               </Link> */}
 
-            {/* <Link to={createPageUrl("Tutorial")}>
+              {/* <Link to={createPageUrl("Tutorial")}>
                 <Button
                   size="lg"
                   variant="outline"
@@ -120,11 +131,11 @@ export default function HomeScreen() {
                   Learn the Rules
                 </Button>
               </Link> */}
-          </View>
-          {/* </View> */}
+            </View>
+            {/* </View> */}
 
-          {/* Stats Grid */}
-          {/* <View className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {/* Stats Grid */}
+            {/* <View className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200 shadow-lg">
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="text-green-800">
@@ -185,9 +196,9 @@ export default function HomeScreen() {
             </Card>
           </View> */}
 
-          {/* Recent Games */}
-          <View className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* <Card className="shadow-lg">
+            {/* Recent Games */}
+            <View className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* <Card className="shadow-lg">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Clock className="w-5 h-5 text-orange-600" />
@@ -261,7 +272,7 @@ export default function HomeScreen() {
               </CardContent>
             </Card> */}
 
-            {/* <Card className="shadow-lg">
+              {/* <Card className="shadow-lg">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-blue-600" />
@@ -308,10 +319,11 @@ export default function HomeScreen() {
                 )}
               </CardContent>
             </Card> */}
+            </View>
           </View>
         </View>
-      </View>
-    </LinearGradient>
+      </LinearGradient>
+    </ScrollView>
   );
 }
 
