@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
 // import { createPageUrl } from "@/utils";
@@ -12,7 +12,8 @@ import { useEffect, useState } from "react";
 //   Clock,
 //   Spade
 // } from "lucide-react";
-import { StyleSheet, Text, View } from "react-native";
+import { Link } from "expo-router";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import "./../global.css";
 
 export default function HomeScreen() {
@@ -80,6 +81,25 @@ export default function HomeScreen() {
           </Text>
 
           <View className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <Link href="/NewGame" asChild>
+              <TouchableOpacity activeOpacity={0.8}>
+                <LinearGradient
+                  colors={["#DC2626", "#B91C1C"]} // red-600 to red-700
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+                  style={styles.button}
+                >
+                  <Feather
+                    name="play"
+                    size={20}
+                    color="white"
+                    style={{ marginRight: 12 }}
+                  />
+                  <Text style={styles.buttonText}>Start New Game</Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </Link>
+
             {/* <Link to={createPageUrl("NewGame")}>
                 <Button
                   size="lg"
@@ -89,6 +109,7 @@ export default function HomeScreen() {
                   Start New Game
                 </Button>
               </Link> */}
+
             {/* <Link to={createPageUrl("Tutorial")}>
                 <Button
                   size="lg"
@@ -330,6 +351,24 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
+  },
+  button: {
+    width: 240,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 16,
+    paddingHorizontal: 32,
+    borderRadius: 12,
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 4,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "600",
   },
 });
 
