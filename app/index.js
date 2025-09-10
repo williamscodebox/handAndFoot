@@ -87,10 +87,6 @@ export default function HomeScreen() {
               and family
             </Text>
 
-            <TouchableOpacity onPress={() => console.log("test")}>
-              <Text>Press me</Text>
-            </TouchableOpacity>
-
             <View className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <TouchableOpacity
                 activeOpacity={0.8}
