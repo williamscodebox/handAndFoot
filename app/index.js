@@ -2,7 +2,6 @@ import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
-// import { createPageUrl } from "@/utils";
 // import {
 //   Play,
 //   Trophy,
@@ -20,6 +19,10 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import Card from "../components/Card";
+import CardContent from "../components/CardContent";
+import CardHeader from "../components/CardHeader";
+import CardTitle from "../components/CardTitle";
 import "./../global.css";
 
 export default function HomeScreen() {
@@ -60,141 +63,143 @@ export default function HomeScreen() {
         colors={["#fef2f2", "#eff6ff"]}
       >
         <View className="min-h-screen p-4 md:p-8">
-          <View className="max-w-7xl mx-auto">
+          <View className="">
             {/* Hero Section */}
-            {/* <View className="text-center mb-12"> */}
-            <View style={styles.heroSection}>
-              <LinearGradient
-                colors={["#DC2626", "#2563EB"]} // from-red-600 to-blue-600
-                start={{ x: 0, y: 0 }} // top-left
-                end={{ x: 1, y: 1 }} // bottom-right
-                style={styles.iconWrapper}
-              >
-                {/* <View className="w-16 h-16 bg-gradient-to-br from-red-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-xl"> */}
-                <MaterialCommunityIcons
-                  name="cards-spade-outline"
-                  size={24}
-                  color="white"
-                />
-                {/* </View> */}
-              </LinearGradient>
-            </View>
-            <Text className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Hand & Foot
-            </Text>
-            <Text className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Learn the classic card game and keep perfect scores with friends
-              and family
-            </Text>
-
-            <View className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <TouchableOpacity
-                activeOpacity={0.8}
-                onPress={() => {
-                  console.log("test");
-                  navigation.navigate("newgame");
-                }} // 👈 matches Drawer.Screen name
-              >
+            <View className="text-center">
+              <View style={styles.heroSection}>
                 <LinearGradient
-                  colors={["#DC2626", "#B91C1C"]} // red-600 to red-700
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 0 }}
-                  style={styles.button}
+                  colors={["#DC2626", "#2563EB"]} // from-red-600 to-blue-600
+                  start={{ x: 0, y: 0 }} // top-left
+                  end={{ x: 1, y: 1 }} // bottom-right
+                  style={styles.iconWrapper}
+                >
+                  <View className="w-16 h-16 bg-gradient-to-br from-red-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-xl">
+                    <MaterialCommunityIcons
+                      name="cards-spade-outline"
+                      size={50}
+                      color="white"
+                    />
+                  </View>
+                </LinearGradient>
+              </View>
+              <Text className="text-center text-5xl md:text-5xl font-bold text-gray-900 mb-6">
+                Hand & Foot
+              </Text>
+              <Text className="text-center text-2xl text-gray-600 mb-8 leading-relaxed">
+                Learn the classic card game and keep perfect scores with friends
+                and family
+              </Text>
+
+              <View className="flex flex-col sm:flex-row gap-4 items-center justify-center mb-12">
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  onPress={() => {
+                    console.log("test");
+                    navigation.navigate("newgame");
+                  }} // 👈 matches Drawer.Screen name
+                >
+                  <LinearGradient
+                    colors={["#DC2626", "#B91C1C"]} // red-600 to red-700
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={styles.button}
+                    className="border border-gray-400"
+                  >
+                    <Feather
+                      name="play"
+                      size={20}
+                      color="white"
+                      style={{ marginRight: 12 }}
+                    />
+                    <Text style={styles.buttonText}>Start New Game</Text>
+                  </LinearGradient>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  onPress={() => {
+                    console.log("test");
+                    navigation.navigate("tutorial");
+                  }} // 👈 matches Drawer.Screen name
+                  style={styles.button2}
+                  className="border border-gray-400 bg-slate-50"
                 >
                   <Feather
-                    name="play"
+                    name="book-open"
                     size={20}
-                    color="white"
-                    style={{ marginRight: 12 }}
+                    color="black"
+                    style={{ marginRight: 14 }}
                   />
-                  <Text style={styles.buttonText}>Start New Game</Text>
-                </LinearGradient>
-              </TouchableOpacity>
 
-              {/* <Link to={createPageUrl("NewGame")}>
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
-                >
-                   <Play className="w-5 h-5 mr-2" /> 
-                  Start New Game
-                </Button>
-              </Link> */}
-
-              {/* <Link to={createPageUrl("Tutorial")}>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="px-8 py-6 text-lg rounded-xl border-2 hover:bg-blue-50"
-                >
-                  <BookOpen className="w-5 h-5 mr-2" />
-                  Learn the Rules
-                </Button>
-              </Link> */}
+                  <Text className="text-2xl text-black font-bold">
+                    Learn the Rules
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
-            {/* </View> */}
 
             {/* Stats Grid */}
-            {/* <View className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200 shadow-lg">
-              <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle className="text-green-800">
-                  <Text>Total Games</Text>
-                </CardTitle>
-                 <Trophy className="w-8 h-8 text-green-600" /> 
-              </CardHeader>
-              <CardContent>
-                <View className="text-3xl font-bold text-green-900">
-                  <Text>{games.length}</Text>
-                </View>
-                <Text className="text-green-700 text-sm">
-                  {completedGames.length} completed, {activeGames.length} active
-                </Text>
-              </CardContent>
-            </Card>
+            <View className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200 shadow-lg">
+                <CardHeader className="flex flex-row items-center justify-between">
+                  <CardTitle className="text-green-800">
+                    <Text>Total Games</Text>
+                  </CardTitle>
+                  {/* <Trophy className="w-8 h-8 text-green-600" /> */}
+                </CardHeader>
+                <CardContent>
+                  <View className="text-3xl font-bold text-green-900">
+                    <Text>{games.length}</Text>
+                  </View>
+                  <Text className="text-green-700 text-sm">
+                    {completedGames.length} completed, {activeGames.length}{" "}
+                    active
+                  </Text>
+                </CardContent>
+              </Card>
 
-            <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 shadow-lg">
-              <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle className="text-blue-800">
-                  <Text>Players</Text>
-                </CardTitle>
-                 <Users className="w-8 h-8 text-blue-600" /> 
-              </CardHeader>
-              <CardContent>
-                <View className="text-3xl font-bold text-blue-900">
-                  <Text>{players.length}</Text>
-                </View>
-                <Text className="text-blue-700 text-sm">
-                  Registered players
-                </Text>
-              </CardContent>
-            </Card>
+              <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 shadow-lg">
+                <CardHeader className="flex flex-row items-center justify-between">
+                  <CardTitle className="text-blue-800">
+                    <Text>Players</Text>
+                  </CardTitle>
+                  {/* <Users className="w-8 h-8 text-blue-600" /> */}
+                </CardHeader>
+                <CardContent>
+                  <View className="text-3xl font-bold text-blue-900">
+                    <Text>{players.length}</Text>
+                  </View>
+                  <Text className="text-blue-700 text-sm">
+                    Registered players
+                  </Text>
+                </CardContent>
+              </Card>
 
-            <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 shadow-lg">
-              <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle className="text-purple-800">
-                  <Text>Champion</Text>
-                </CardTitle>
-                <Crown className="w-8 h-8 text-purple-600" />
-              </CardHeader>
-              <CardContent>
-                {topPlayer ? (
-                  <View>
-                    <View className="text-2xl font-bold text-purple-900">
-                      <Text>{topPlayer.name}</Text>
+              <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 shadow-lg">
+                <CardHeader className="flex flex-row items-center justify-between">
+                  <CardTitle className="text-purple-800">
+                    <Text>Champion</Text>
+                  </CardTitle>
+                  {/* <Crown className="w-8 h-8 text-purple-600" /> */}
+                </CardHeader>
+                <CardContent>
+                  {topPlayer ? (
+                    <View>
+                      <View className="text-2xl font-bold text-purple-900">
+                        <Text>{topPlayer.name}</Text>
+                      </View>
+                      <Text className="text-purple-700 text-sm">
+                        {topPlayer.games_won} wins
+                      </Text>
                     </View>
-                    <Text className="text-purple-700 text-sm">
-                      {topPlayer.games_won} wins
-                    </Text>
-                  </View>
-                ) : (
-                  <View className="text-lg text-purple-700">
-                    <Text>No games yet</Text>
-                  </View>
-                )}
-              </CardContent>
-            </Card>
-          </View> */}
+                  ) : (
+                    <View className="text-lg text-purple-700">
+                      <Text>No games yet</Text>
+                    </View>
+                  )}
+                </CardContent>
+              </Card>
+            </View>
 
             {/* Recent Games */}
             <View className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -330,17 +335,18 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 40,
+    padding: 16,
+    paddingTop: 30,
     justifyContent: "center",
     alignItems: "center",
   },
   heroSection: {
     alignItems: "center",
-    marginBottom: 48,
+    marginBottom: 38,
   },
   iconWrapper: {
-    width: 64,
-    height: 64,
+    width: 78,
+    height: 78,
     borderRadius: 16,
     justifyContent: "center",
     alignItems: "center",
@@ -366,6 +372,19 @@ const styles = StyleSheet.create({
   },
   button: {
     width: 240,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 16,
+    paddingHorizontal: 32,
+    borderRadius: 12,
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 4,
+  },
+  button2: {
+    width: 220,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
