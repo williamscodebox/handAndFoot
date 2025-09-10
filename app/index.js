@@ -53,7 +53,7 @@ export default function HomeScreen() {
   return (
     <ScrollView keyboardShouldPersistTaps="handled">
       <LinearGradient
-        pointerEvents={"none"}
+        // pointerEvents={"none"}
         style={styles.container}
         start={{ x: 0, y: 1 }}
         end={{ x: 0, y: 0 }}
