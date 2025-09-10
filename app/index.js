@@ -1,4 +1,5 @@
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
 // import { createPageUrl } from "@/utils";
@@ -12,7 +13,6 @@ import { useEffect, useState } from "react";
 //   Clock,
 //   Spade
 // } from "lucide-react";
-import { Link } from "expo-router";
 import {
   ScrollView,
   StyleSheet,
@@ -45,7 +45,7 @@ export default function HomeScreen() {
     //   setLoading(false);
     // }
   };
-
+  const navigation = useNavigation();
   const activeGames = games.filter((game) => game.status === "active");
   const completedGames = games.filter((game) => game.status === "completed");
   const topPlayer = players[0];
@@ -87,29 +87,33 @@ export default function HomeScreen() {
               and family
             </Text>
 
-            <View className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Link href="/newgame">
-                <Text>Go to New Game</Text>
-              </Link>
+            <TouchableOpacity onPress={() => console.log("test")}>
+              <Text>Press me</Text>
+            </TouchableOpacity>
 
-              <Link href="/app/newgame" asChild>
-                <TouchableOpacity activeOpacity={0.8}>
-                  <LinearGradient
-                    colors={["#DC2626", "#B91C1C"]} // red-600 to red-700
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 0 }}
-                    style={styles.button}
-                  >
-                    <Feather
-                      name="play"
-                      size={20}
-                      color="white"
-                      style={{ marginRight: 12 }}
-                    />
-                    <Text style={styles.buttonText}>Start New Game</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              </Link>
+            <View className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => {
+                  console.log("test");
+                  navigation.navigate("newgame");
+                }} // 👈 matches Drawer.Screen name
+              >
+                <LinearGradient
+                  colors={["#DC2626", "#B91C1C"]} // red-600 to red-700
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+                  style={styles.button}
+                >
+                  <Feather
+                    name="play"
+                    size={20}
+                    color="white"
+                    style={{ marginRight: 12 }}
+                  />
+                  <Text style={styles.buttonText}>Start New Game</Text>
+                </LinearGradient>
+              </TouchableOpacity>
 
               {/* <Link to={createPageUrl("NewGame")}>
                 <Button
