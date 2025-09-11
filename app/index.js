@@ -266,11 +266,10 @@ export default function HomeScreen() {
                       color: "#2563eb",
                     }}
                   >
-                    {games.length}
+                    {players.length}
                   </Text>
                   <Text style={{ color: "#3B82F6", fontSize: 14 }}>
-                    {completedGames.length} completed, {activeGames.length}{" "}
-                    active
+                    Registered players
                   </Text>
                 </View>
               </LinearGradient>
@@ -303,32 +302,40 @@ export default function HomeScreen() {
                       color: "#9333ea",
                     }}
                   >
-                    Players
+                    Champion
                   </Text>
-                  <Feather
-                    name="users"
-                    size={32}
-                    fontWeight="bold"
-                    color="#9F7AEA"
-                    marginRight={6}
+                  <MaterialCommunityIcons
+                    name="crown-outline"
+                    size={48}
+                    // fontWeight="bold"
+                    color="#9333ea"
+                    marginBottom={6}
                   />
                 </View>
 
-                <View style={{ marginTop: 16, marginBottom: 10, gap: 5 }}>
-                  <Text
-                    style={{
-                      fontSize: 28,
-                      fontWeight: "bold",
-                      color: "#9333ea",
-                    }}
-                  >
-                    {games.length}
-                  </Text>
-                  <Text style={{ color: "#9F7AEA", fontSize: 14 }}>
-                    {completedGames.length} completed, {activeGames.length}{" "}
-                    active
-                  </Text>
-                </View>
+                {/* Content */}
+                {topPlayer ? (
+                  <View style={{ marginTop: 16, marginBottom: 10, gap: 5 }}>
+                    <Text
+                      style={{
+                        fontSize: 28,
+                        fontWeight: "bold",
+                      }}
+                      className="text-purple-500"
+                    >
+                      {topPlayer.name}
+                    </Text>
+                    <Text style={{ color: "#9F7AEA", fontSize: 14 }}>
+                      {topPlayer.games_won} wins
+                    </Text>
+                  </View>
+                ) : (
+                  <View style={{ marginTop: 16, marginBottom: 10, gap: 5 }}>
+                    <Text style={{ color: "#9F7AEA", fontSize: 16 }}>
+                      No games yet
+                    </Text>
+                  </View>
+                )}
               </LinearGradient>
 
               {/* 
