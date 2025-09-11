@@ -2,9 +2,6 @@ import { EvilIcons, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
-import Card from "../components/Card";
-import CardContent from "../components/CardContent";
-import CardHeader from "../components/CardHeader";
 import CardTitle from "../components/CardTitle";
 // import {
 //   TrendingUp,
@@ -463,55 +460,74 @@ export default function HomeScreen() {
               </View>
             </View>
 
-            <Card className="shadow-lg">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  {/* <TrendingUp className="w-5 h-5 text-blue-600" /> */}
-                  <Text>Recent Results</Text>
+            <View className="shadow-xl border-2 border-gray-200 rounded-xl bg-slate-50 p-10 pb-2 mb-8">
+              <View>
+                <CardTitle className="flex flex-row items-center gap-4 text-lg font-bold">
+                  <Feather
+                    name="trending-up"
+                    size={24}
+                    color="#2B6CB0"
+                    marginBottom={4}
+                  />
+                  <Text className="text-3xl font-bold">Recent Results</Text>
                 </CardTitle>
-              </CardHeader>
-              <CardContent>
+              </View>
+
+              <View>
                 {completedGames.length > 0 ? (
-                  <View className="space-y-3">
-                    {completedGames.map((game) => (
-                      <View
-                        key={game.id}
-                        className="flex justify-between items-center p-3 bg-blue-50 rounded-lg border border-blue-200"
-                      >
-                        <View>
-                          <Text className="font-semibold">{game.name}</Text>
-                          <Text className="text-sm text-gray-600">
-                            {format(new Date(game.created_date), "MMM d, yyyy")}
-                          </Text>
-                        </View>
-                        <View className="text-right">
-                          <Badge className="bg-blue-100 text-blue-800 border-blue-300">
-                            Completed
-                          </Badge>
-                          {game.winner_id && (
-                            <Text className="text-sm text-gray-600 mt-1">
-                              Winner:{" "}
-                              {
-                                game.players.find(
-                                  (p) => p.player_id === game.winner_id
-                                )?.name
-                              }
+                  <View className="flex flex-col gap-3 mt-3">
+                    {completedGames.map((game) => {
+                      const winner = Array.isArray(game.players)
+                        ? game.players.find(
+                            (p) => p.player_id === game.winner_id
+                          )
+                        : null;
+
+                      return (
+                        <View
+                          key={game.id}
+                          className="flex flex-row justify-between items-center p-3 bg-blue-50 rounded-lg border border-blue-200"
+                        >
+                          <View>
+                            <Text className="font-semibold">
+                              {game.name || "Untitled Game"}
                             </Text>
-                          )}
+                            {game.created_date && (
+                              <Text className="text-sm text-gray-600">
+                                {format(
+                                  new Date(game.created_date),
+                                  "MMM d, yyyy"
+                                )}
+                              </Text>
+                            )}
+                          </View>
+
+                          <View className="items-end">
+                            <Badge className="bg-blue-100 border border-blue-300 rounded px-2 py-1">
+                              <Text className="text-blue-800 text-xs">
+                                Completed
+                              </Text>
+                            </Badge>
+                            {winner && (
+                              <Text className="text-sm text-gray-600 mt-1">
+                                Winner: {winner.name}
+                              </Text>
+                            )}
+                          </View>
                         </View>
-                      </View>
-                    ))}
+                      );
+                    })}
                   </View>
                 ) : (
-                  <View className="text-center py-8">
-                    {/* <Trophy className="w-12 h-12 text-gray-400 mx-auto mb-3" /> */}
-                    <Text className="text-gray-500">
+                  <View className="items-center py-8">
+                    <Text className="text-gray-300 text-center text-xl font-bold">
                       No completed games yet
                     </Text>
                   </View>
                 )}
-              </CardContent>
-            </Card>
+              </View>
+            </View>
+
             {/* -------------------------------------------------------------------- */}
             {/* <View className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <Card className="shadow-lg">
