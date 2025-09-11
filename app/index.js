@@ -1,12 +1,8 @@
 import { EvilIcons, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { format } from "date-fns";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
-import CardTitle from "../components/CardTitle";
-// import {
-//   TrendingUp,
-//   Clock,
-// } from "lucide-react";
 import {
   ActivityIndicator,
   ScrollView,
@@ -15,6 +11,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import Badge from "../components/Badge";
+import CardTitle from "../components/CardTitle";
 import "./../global.css";
 
 export default function HomeScreen() {
@@ -37,65 +35,64 @@ export default function HomeScreen() {
     // } catch (error) {
     //   console.error("Error loading data:", error);
     // } finally {
-    setLoading(false);
+    // setLoading(false);
     // }
+
     // Simulate API delay
-    // setTimeout(() => {
-    // Mock data
-    // const mockGames = [
-    //   { id: 1, status: "active" },
-    //   { id: 2, status: "completed" },
-    //   { id: 3, status: "completed" },
-    // ];
-    // const mockPlayers = [
-    //   { id: 1, name: "Alice", games_won: 10 },
-    //   { id: 2, name: "Bob", games_won: 8 },
-    // ];
-    // setGames(mockGames);
-    // setPlayers(mockPlayers);
-    //       const mockGames = [
-    //   {
-    //     id: 1,
-    //     name: "Game 1",
-    //     status: "active",
-    //     current_round: 2,
-    //     players: [
-    //       { id: 1, name: "Alice", total_score: 120 },
-    //       { id: 2, name: "Bob", total_score: 95 },
-    //     ],
-    //   },
-    //   {
-    //     id: 2,
-    //     name: "Game 2",
-    //     status: "completed",
-    //     current_round: 4,
-    //     players: [
-    //       { id: 3, name: "Charlie", total_score: 200 },
-    //       { id: 4, name: "Dana", total_score: 180 },
-    //     ],
-    //   },
-    //   {
-    //     id: 3,
-    //     name: "Game 3",
-    //     status: "completed",
-    //     current_round: 3,
-    //     players: [
-    //       { id: 5, name: "Eve", total_score: 150 },
-    //       { id: 6, name: "Frank", total_score: 140 },
-    //     ],
-    //   },
-    // ];
+    setTimeout(() => {
+      const mockGames = [
+        {
+          id: 1,
+          name: "Game 1",
+          status: "active",
+          current_round: 2,
+          created_date: "2025-09-01T10:00:00Z",
+          players: [
+            { player_id: 1, name: "Alice", total_score: 120 },
+            { player_id: 2, name: "Bob", total_score: 95 },
+          ],
+        },
+        {
+          id: 2,
+          name: "Game 2",
+          status: "completed",
+          current_round: 4,
+          created_date: "2025-08-28T14:30:00Z",
+          winner_id: 3,
+          players: [
+            { player_id: 3, name: "Charlie", total_score: 200 },
+            { player_id: 4, name: "Dana", total_score: 180 },
+          ],
+        },
+        {
+          id: 3,
+          name: "Game 3",
+          status: "completed",
+          current_round: 3,
+          created_date: "2025-08-20T09:15:00Z",
+          winner_id: 5,
+          players: [
+            { player_id: 5, name: "Eve", total_score: 150 },
+            { player_id: 6, name: "Frank", total_score: 140 },
+          ],
+        },
+      ];
 
-    // const mockPlayers = [
-    //   { id: 1, name: "Alice", games_won: 10 },
-    //   { id: 2, name: "Bob", games_won: 8 },
-    // ];
+      const mockPlayers = [
+        { id: 1, name: "Alice", games_won: 10 },
+        { id: 2, name: "Bob", games_won: 8 },
+        { id: 3, name: "Charlie", games_won: 12 },
+        { id: 4, name: "Dana", games_won: 7 },
+        { id: 5, name: "Eve", games_won: 15 },
+        { id: 6, name: "Frank", games_won: 5 },
+      ];
 
-    //   setGames(mockGames);
-    //   setPlayers(mockPlayers);
-    //   setLoading(false);
-    // }, 1000);
+      setGames(mockGames);
+      setPlayers(mockPlayers);
+      setLoading(false);
+    }, 1000);
   };
+
   const navigation = useNavigation();
   const activeGames = games.filter((game) => game.status === "active");
   const completedGames = games.filter((game) => game.status === "completed");
@@ -390,9 +387,9 @@ export default function HomeScreen() {
                     <Text className="text-3xl font-bold">Active Games</Text>
                   </CardTitle>
                 </View>
-                <View>
+                <View className="mb-8">
                   {activeGames.length > 0 ? (
-                    <View className="flex flex-col gap-3 mt-3">
+                    <View className="flex flex-col gap-3 mt-6">
                       {activeGames.map((game) => {
                         // Safely get leader if players exist
                         const leader =
@@ -431,6 +428,18 @@ export default function HomeScreen() {
                               <Text className="text-orange-800 text-xs">
                                 In Progress
                               </Text>
+                              <View className="mt-4">
+                                <TouchableOpacity
+                                  style={styles.button3}
+                                  className="border border-gray-400 bg-slate-50"
+                                  activeOpacity={0.8}
+                                  onPress={() => navigation.navigate("newgame")}
+                                >
+                                  <Text className="text-xl text-black font-bold">
+                                    Start a Game
+                                  </Text>
+                                </TouchableOpacity>
+                              </View>
                             </View>
                           </View>
                         );

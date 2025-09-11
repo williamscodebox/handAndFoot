@@ -16,3 +16,6 @@ Have Home Screen finished 09-12-25
 work on home screen structure on 09-10-25
 
 index for finding expo/vector-icons -->  https://icons.expo.fyi/Index
+
+
+working on lines 431 - 442 in home page --> needs styling to finish look of the continue button
