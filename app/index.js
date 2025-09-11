@@ -1,4 +1,4 @@
-import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { EvilIcons, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
@@ -13,16 +13,13 @@ import { useEffect, useState } from "react";
 //   Spade
 // } from "lucide-react";
 import {
+  ActivityIndicator,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-import Card from "../components/Card";
-import CardContent from "../components/CardContent";
-import CardHeader from "../components/CardHeader";
-import CardTitle from "../components/CardTitle";
 import "./../global.css";
 
 export default function HomeScreen() {
@@ -47,11 +44,36 @@ export default function HomeScreen() {
     // } finally {
     //   setLoading(false);
     // }
+    // Simulate API delay
+    setTimeout(() => {
+      // Mock data
+      const mockGames = [
+        { id: 1, status: "active" },
+        { id: 2, status: "completed" },
+        { id: 3, status: "completed" },
+      ];
+      const mockPlayers = [
+        { id: 1, name: "Alice", games_won: 10 },
+        { id: 2, name: "Bob", games_won: 8 },
+      ];
+      setGames(mockGames);
+      setPlayers(mockPlayers);
+      setLoading(false);
+    }, 1000);
   };
   const navigation = useNavigation();
   const activeGames = games.filter((game) => game.status === "active");
   const completedGames = games.filter((game) => game.status === "completed");
   const topPlayer = players[0];
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#B91C1C" />
+        <Text style={{ marginTop: 10 }}>Loading data...</Text>
+      </View>
+    );
+  }
 
   return (
     <ScrollView keyboardShouldPersistTaps="handled">
@@ -139,48 +161,184 @@ export default function HomeScreen() {
             </View>
 
             {/* Stats Grid */}
-            <View className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200 shadow-lg">
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <CardTitle className="text-green-800">
-                    <Text>Total Games</Text>
-                  </CardTitle>
-                  {/* <Trophy className="w-8 h-8 text-green-600" /> */}
-                </CardHeader>
-                <CardContent>
-                  <View className="text-3xl font-bold text-green-900">
-                    <Text>{games.length}</Text>
-                  </View>
-                  <Text className="text-green-700 text-sm">
+            <View className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+              <LinearGradient
+                colors={["#f0fdf4", "#dcfce7"]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={{
+                  borderRadius: 12,
+                  padding: 32,
+                  paddingBottom: 30,
+                  shadowColor: "#000",
+                  shadowOpacity: 0.1,
+                  shadowRadius: 6,
+                  elevation: 3,
+                }}
+                className="border border-green-200"
+              >
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontSize: 30,
+                      fontWeight: "bold",
+                      color: "#065f46",
+                    }}
+                  >
+                    Total Games
+                  </Text>
+                  <EvilIcons
+                    name="trophy"
+                    size={50}
+                    fontWeight="bold"
+                    color="green"
+                    marginBottom={8}
+                  />
+                </View>
+
+                <View style={{ marginTop: 16, marginBottom: 6, gap: 5 }}>
+                  <Text
+                    style={{
+                      fontSize: 28,
+                      fontWeight: "bold",
+                      color: "#064e3b",
+                    }}
+                  >
+                    {games.length}
+                  </Text>
+                  <Text style={{ color: "#047857", fontSize: 14 }}>
                     {completedGames.length} completed, {activeGames.length}{" "}
                     active
                   </Text>
-                </CardContent>
-              </Card>
+                </View>
+              </LinearGradient>
 
-              <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 shadow-lg">
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <CardTitle className="text-blue-800">
-                    <Text>Players</Text>
-                  </CardTitle>
-                  {/* <Users className="w-8 h-8 text-blue-600" /> */}
-                </CardHeader>
-                <CardContent>
-                  <View className="text-3xl font-bold text-blue-900">
-                    <Text>{players.length}</Text>
-                  </View>
-                  <Text className="text-blue-700 text-sm">
-                    Registered players
+              <LinearGradient
+                colors={["#eff6ff", "#dbeafe"]} // blue-50 to blue-100
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={{
+                  borderRadius: 12,
+                  padding: 36,
+                  shadowColor: "#000",
+                  shadowOpacity: 0.1,
+                  shadowRadius: 6,
+                  elevation: 3,
+                }}
+                className="border border-blue-200"
+              >
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontSize: 30,
+                      fontWeight: "bold",
+                      color: "#2563eb",
+                    }}
+                  >
+                    Players
                   </Text>
-                </CardContent>
-              </Card>
+                  <Feather
+                    name="users"
+                    size={32}
+                    fontWeight="bold"
+                    color="#3B82F6"
+                    marginRight={6}
+                  />
+                </View>
+
+                <View style={{ marginTop: 16, marginBottom: 10, gap: 5 }}>
+                  <Text
+                    style={{
+                      fontSize: 28,
+                      fontWeight: "bold",
+                      color: "#3B82F6",
+                    }}
+                  >
+                    {games.length}
+                  </Text>
+                  <Text style={{ color: "#3B82F6", fontSize: 14 }}>
+                    {completedGames.length} completed, {activeGames.length}{" "}
+                    active
+                  </Text>
+                </View>
+              </LinearGradient>
+
+              <LinearGradient
+                colors={["#eff6ff", "#dbeafe"]} // blue-50 to blue-100
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={{
+                  borderRadius: 12,
+                  padding: 36,
+                  shadowColor: "#000",
+                  shadowOpacity: 0.1,
+                  shadowRadius: 6,
+                  elevation: 3,
+                }}
+                className="border border-blue-200"
+              >
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontSize: 30,
+                      fontWeight: "bold",
+                      color: "#2563eb",
+                    }}
+                  >
+                    Players
+                  </Text>
+                  <Feather
+                    name="users"
+                    size={32}
+                    fontWeight="bold"
+                    color="#3B82F6"
+                    marginRight={6}
+                  />
+                </View>
+
+                <View style={{ marginTop: 16, marginBottom: 10, gap: 5 }}>
+                  <Text
+                    style={{
+                      fontSize: 28,
+                      fontWeight: "bold",
+                      color: "#3B82F6",
+                    }}
+                  >
+                    {games.length}
+                  </Text>
+                  <Text style={{ color: "#3B82F6", fontSize: 14 }}>
+                    {completedGames.length} completed, {activeGames.length}{" "}
+                    active
+                  </Text>
+                </View>
+              </LinearGradient>
+
+              {/* 
 
               <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 shadow-lg">
                 <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle className="text-purple-800">
                     <Text>Champion</Text>
                   </CardTitle>
-                  {/* <Crown className="w-8 h-8 text-purple-600" /> */}
+                  {/* <Crown className="w-8 h-8 text-purple-600" />
                 </CardHeader>
                 <CardContent>
                   {topPlayer ? (
@@ -198,7 +356,7 @@ export default function HomeScreen() {
                     </View>
                   )}
                 </CardContent>
-              </Card>
+              </Card>*/}
             </View>
 
             {/* Recent Games */}
