@@ -3,14 +3,8 @@ import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
 // import {
-//   Play,
-//   Trophy,
-//   Users,
-//   BookOpen,
 //   TrendingUp,
-//   Crown,
 //   Clock,
-//   Spade
 // } from "lucide-react";
 import {
   ActivityIndicator,
@@ -337,33 +331,6 @@ export default function HomeScreen() {
                   </View>
                 )}
               </LinearGradient>
-
-              {/* 
-
-              <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 shadow-lg">
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <CardTitle className="text-purple-800">
-                    <Text>Champion</Text>
-                  </CardTitle>
-                  {/* <Crown className="w-8 h-8 text-purple-600" />
-                </CardHeader>
-                <CardContent>
-                  {topPlayer ? (
-                    <View>
-                      <View className="text-2xl font-bold text-purple-900">
-                        <Text>{topPlayer.name}</Text>
-                      </View>
-                      <Text className="text-purple-700 text-sm">
-                        {topPlayer.games_won} wins
-                      </Text>
-                    </View>
-                  ) : (
-                    <View className="text-lg text-purple-700">
-                      <Text>No games yet</Text>
-                    </View>
-                  )}
-                </CardContent>
-              </Card>*/}
             </View>
 
             {/* Recent Games */}
