@@ -2,10 +2,6 @@ import { EvilIcons, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
-import Badge from "../components/Badge";
-import Card from "../components/Card";
-import CardContent from "../components/CardContent";
-import CardHeader from "../components/CardHeader";
 import CardTitle from "../components/CardTitle";
 // import {
 //   TrendingUp,
@@ -41,64 +37,64 @@ export default function HomeScreen() {
     // } catch (error) {
     //   console.error("Error loading data:", error);
     // } finally {
-    //   setLoading(false);
+    setLoading(false);
     // }
     // Simulate API delay
-    setTimeout(() => {
-      // Mock data
-      const mockGames = [
-        { id: 1, status: "active" },
-        { id: 2, status: "completed" },
-        { id: 3, status: "completed" },
-      ];
-      const mockPlayers = [
-        { id: 1, name: "Alice", games_won: 10 },
-        { id: 2, name: "Bob", games_won: 8 },
-      ];
-      setGames(mockGames);
-      setPlayers(mockPlayers);
-      //       const mockGames = [
-      //   {
-      //     id: 1,
-      //     name: "Game 1",
-      //     status: "active",
-      //     current_round: 2,
-      //     players: [
-      //       { id: 1, name: "Alice", total_score: 120 },
-      //       { id: 2, name: "Bob", total_score: 95 },
-      //     ],
-      //   },
-      //   {
-      //     id: 2,
-      //     name: "Game 2",
-      //     status: "completed",
-      //     current_round: 4,
-      //     players: [
-      //       { id: 3, name: "Charlie", total_score: 200 },
-      //       { id: 4, name: "Dana", total_score: 180 },
-      //     ],
-      //   },
-      //   {
-      //     id: 3,
-      //     name: "Game 3",
-      //     status: "completed",
-      //     current_round: 3,
-      //     players: [
-      //       { id: 5, name: "Eve", total_score: 150 },
-      //       { id: 6, name: "Frank", total_score: 140 },
-      //     ],
-      //   },
-      // ];
+    // setTimeout(() => {
+    // Mock data
+    // const mockGames = [
+    //   { id: 1, status: "active" },
+    //   { id: 2, status: "completed" },
+    //   { id: 3, status: "completed" },
+    // ];
+    // const mockPlayers = [
+    //   { id: 1, name: "Alice", games_won: 10 },
+    //   { id: 2, name: "Bob", games_won: 8 },
+    // ];
+    // setGames(mockGames);
+    // setPlayers(mockPlayers);
+    //       const mockGames = [
+    //   {
+    //     id: 1,
+    //     name: "Game 1",
+    //     status: "active",
+    //     current_round: 2,
+    //     players: [
+    //       { id: 1, name: "Alice", total_score: 120 },
+    //       { id: 2, name: "Bob", total_score: 95 },
+    //     ],
+    //   },
+    //   {
+    //     id: 2,
+    //     name: "Game 2",
+    //     status: "completed",
+    //     current_round: 4,
+    //     players: [
+    //       { id: 3, name: "Charlie", total_score: 200 },
+    //       { id: 4, name: "Dana", total_score: 180 },
+    //     ],
+    //   },
+    //   {
+    //     id: 3,
+    //     name: "Game 3",
+    //     status: "completed",
+    //     current_round: 3,
+    //     players: [
+    //       { id: 5, name: "Eve", total_score: 150 },
+    //       { id: 6, name: "Frank", total_score: 140 },
+    //     ],
+    //   },
+    // ];
 
-      // const mockPlayers = [
-      //   { id: 1, name: "Alice", games_won: 10 },
-      //   { id: 2, name: "Bob", games_won: 8 },
-      // ];
+    // const mockPlayers = [
+    //   { id: 1, name: "Alice", games_won: 10 },
+    //   { id: 2, name: "Bob", games_won: 8 },
+    // ];
 
-      setGames(mockGames);
-      setPlayers(mockPlayers);
-      setLoading(false);
-    }, 1000);
+    //   setGames(mockGames);
+    //   setPlayers(mockPlayers);
+    //   setLoading(false);
+    // }, 1000);
   };
   const navigation = useNavigation();
   const activeGames = games.filter((game) => game.status === "active");
@@ -382,43 +378,55 @@ export default function HomeScreen() {
             {/* Recent Games */}
 
             <View className="flex flex-col gap-8">
-              <Card className="shadow-lg rounded-lg bg-white p-4">
-                <CardHeader>
+              <View className="shadow-lg border border-gray-200 rounded-lg bg-white p-4">
+                <View>
                   <CardTitle className="flex flex-row items-center gap-2 text-lg font-bold">
                     <Feather name="clock" size={24} color="black" />
-                    Active Games
+                    <Text>Active Games</Text>
                   </CardTitle>
-                </CardHeader>
-
-                <CardContent>
+                </View>
+                <View>
                   {activeGames.length > 0 ? (
                     <View className="flex flex-col gap-3 mt-3">
                       {activeGames.map((game) => {
-                        const leader = game.players.reduce((prev, current) =>
-                          current.total_score > prev.total_score
-                            ? current
-                            : prev
-                        );
+                        // Safely get leader if players exist
+                        const leader =
+                          Array.isArray(game.players) && game.players.length > 0
+                            ? game.players.reduce((prev, current) =>
+                                current.total_score > prev.total_score
+                                  ? current
+                                  : prev
+                              )
+                            : null;
                         return (
                           <View
                             key={game.id}
                             className="flex flex-row justify-between items-center p-4 bg-orange-50 rounded-lg border border-orange-200"
                           >
                             <View>
-                              <Text className="font-semibold">{game.name}</Text>
+                              <Text className="font-semibold">
+                                {game.name || "Untitled Game"}
+                              </Text>
                               <Text className="text-sm text-gray-600">
-                                Round {game.current_round} •{" "}
-                                {game.players.length} players
+                                Round {game.current_round ?? "?"} •{" "}
+                                {Array.isArray(game.players)
+                                  ? game.players.length
+                                  : 0}{" "}
+                                players
                               </Text>
-                              <Text className="text-xs text-gray-500 mt-1">
-                                Leader: {leader.name} ({leader.total_score} pts)
-                              </Text>
+                              {leader && (
+                                <Text className="text-xs text-gray-500 mt-1">
+                                  Leader: {leader.name} ({leader.total_score}{" "}
+                                  pts)
+                                </Text>
+                              )}
                             </View>
-                            <Badge className="bg-orange-100 border border-orange-300 rounded px-2 py-1">
+
+                            <View className="bg-orange-100 border border-orange-300 rounded px-2 py-1">
                               <Text className="text-orange-800 text-xs">
                                 In Progress
                               </Text>
-                            </Badge>
+                            </View>
                           </View>
                         );
                       })}
@@ -431,8 +439,8 @@ export default function HomeScreen() {
                       </Text>
                     </View>
                   )}
-                </CardContent>
-              </Card>
+                </View>
+              </View>
             </View>
 
             {/* -------------------------------------------------------------------- */}
