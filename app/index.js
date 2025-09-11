@@ -20,7 +20,8 @@ export default function HomeScreen() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadData();
+    // loadData();
+    setLoading(false);
   }, []);
 
   const loadData = async () => {
@@ -527,7 +528,14 @@ export default function HomeScreen() {
                     })}
                   </View>
                 ) : (
-                  <View className="items-center py-8">
+                  <View className="items-center py-4 mb-4">
+                    <EvilIcons
+                      name="trophy"
+                      size={82}
+                      fontWeight="bold"
+                      color="#9CA3AF"
+                      marginBottom={18}
+                    />
                     <Text className="text-gray-300 text-center text-xl font-bold">
                       No completed games yet
                     </Text>
@@ -535,131 +543,6 @@ export default function HomeScreen() {
                 )}
               </View>
             </View>
-
-            {/* -------------------------------------------------------------------- */}
-            {/* <View className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <Card className="shadow-lg">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    {/* <Clock className="w-5 h-5 text-orange-600" /> 
-                    <Feather name="clock" size={24} color="black" />
-                    <Text>Active Games</Text>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {activeGames.length > 0 ? (
-                    <View className="space-y-3">
-                      {activeGames.map((game) => (
-                        <View
-                          key={game.id}
-                          className="flex justify-between items-center p-4 bg-orange-50 rounded-lg border border-orange-200 hover:border-orange-300 transition-colors"
-                        >
-                          <View>
-                            <Text className="font-semibold">{game.name}</Text>
-                            <Text className="text-sm text-gray-600">
-                              Round {game.current_round} • {game.players.length}{" "}
-                              players
-                            </Text>
-                            <Text className="text-xs text-gray-500 mt-1">
-                              Leader:{" "}
-                              {
-                                game.players.reduce((prev, current) =>
-                                  current.total_score > prev.total_score
-                                    ? current
-                                    : prev
-                                ).name
-                              }{" "}
-                              (
-                              {
-                                game.players.reduce((prev, current) =>
-                                  current.total_score > prev.total_score
-                                    ? current
-                                    : prev
-                                ).total_score
-                              }{" "}
-                              pts)
-                            </Text>
-                          </View>
-                          <View className="flex flex-col gap-2">
-                            <Badge className="bg-orange-100 text-orange-800 border-orange-300">
-                              In Progress
-                            </Badge>
-                            {/* <Link to={createPageUrl(`Game?id=${game.id}`)}>
-                              <Button
-                                size="sm"
-                                className="w-full bg-orange-600 hover:bg-orange-700"
-                              >
-                                <Play className="w-3 h-3 mr-1" />
-                                Continue
-                              </Button>
-                            </Link> 
-                          </View>
-                        </View>
-                      ))}
-                    </View>
-                  ) : (
-                    <View className="text-center py-8">
-                      {/* <Clock className="w-12 h-12 text-gray-400 mx-auto mb-3" /> 
-                      <Feather name="clock" size={24} color="black" />
-                      <Text className="text-gray-500">No active games</Text>
-                      {/* <Link to={createPageUrl("NewGame")}>
-                        <Button variant="outline" size="sm" className="mt-2">
-                          Start a Game
-                        </Button>
-                      </Link> 
-                    </View>
-                  )}
-                </CardContent>
-              </Card> */}
-
-            {/* <Card className="shadow-lg">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-blue-600" />
-                  Recent Results
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {completedGames.length > 0 ? (
-                  <div className="space-y-3">
-                    {completedGames.map((game) => (
-                      <div
-                        key={game.id}
-                        className="flex justify-between items-center p-3 bg-blue-50 rounded-lg border border-blue-200"
-                      >
-                        <div>
-                          <h4 className="font-semibold">{game.name}</h4>
-                          <p className="text-sm text-gray-600">
-                            {format(new Date(game.created_date), "MMM d, yyyy")}
-                          </p>
-                        </div>
-                        <div className="text-right">
-                          <Badge className="bg-blue-100 text-blue-800 border-blue-300">
-                            Completed
-                          </Badge>
-                          {game.winner_id && (
-                            <p className="text-sm text-gray-600 mt-1">
-                              Winner:{" "}
-                              {
-                                game.players.find(
-                                  (p) => p.player_id === game.winner_id
-                                )?.name
-                              }
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="text-center py-8">
-                    <Trophy className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-                    <p className="text-gray-500">No completed games yet</p>
-                  </div>
-                )}
-              </CardContent>
-            </Card> 
-            </View>*/}
           </View>
         </View>
       </LinearGradient>
@@ -750,11 +633,3 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
-
-// <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-{
-  /* / may have to remove view component with the gradient setup */
-}
-// </View>
-
-// wrap code with this view if gradient and styles not working
