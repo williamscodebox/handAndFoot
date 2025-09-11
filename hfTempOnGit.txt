@@ -7,12 +7,12 @@ Game Page needs set up
 create marketing video 5 min length -- current at 0:00:11
 
 Goal to have Tutorial finished 09-09-25  --> completed 09-09-25 on target
-Have Home Screen finished 09-12-25  -->
+Have Home Screen finished 09-12-25  --> completed 09-11-25 one day earlier than target
 Have History page finished 09-15-25  -->
+Have Newgame page finished 09-19-25 --> 
 
 work on home screen structure on 09-10-25
 
 index for finding expo/vector-icons -->  https://icons.expo.fyi/Index
 
 
-working on lines 431 - 442 in home page --> needs styling to finish look of the continue button
