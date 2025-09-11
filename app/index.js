@@ -2,6 +2,9 @@ import { EvilIcons, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
+import Card from "../components/Card";
+import CardContent from "../components/CardContent";
+import CardHeader from "../components/CardHeader";
 import CardTitle from "../components/CardTitle";
 // import {
 //   TrendingUp,
@@ -377,12 +380,17 @@ export default function HomeScreen() {
 
             {/* Recent Games */}
 
-            <View className="flex flex-col gap-8">
-              <View className="shadow-lg border border-gray-200 rounded-lg bg-white p-4">
+            <View className="flex flex-col gap-8 mb-8">
+              <View className="shadow-xl border-2 border-gray-200 rounded-xl bg-slate-50 p-10 pb-2">
                 <View>
-                  <CardTitle className="flex flex-row items-center gap-2 text-lg font-bold">
-                    <Feather name="clock" size={24} color="black" />
-                    <Text>Active Games</Text>
+                  <CardTitle className="flex flex-row items-center gap-4 text-lg font-bold">
+                    <Feather
+                      name="clock"
+                      size={24}
+                      color="#B7791F"
+                      marginBottom={4}
+                    />
+                    <Text className="text-3xl font-bold">Active Games</Text>
                   </CardTitle>
                 </View>
                 <View>
@@ -432,17 +440,78 @@ export default function HomeScreen() {
                       })}
                     </View>
                   ) : (
-                    <View className="items-center py-8">
-                      <Feather name="clock" size={24} color="black" />
-                      <Text className="text-gray-500 mt-2">
+                    <View className="items-center pt-16 pb-12">
+                      <Feather name="clock" size={62} color="#9CA3AF" />
+                      <Text className="text-xl text-gray-400 mt-6">
                         No active games
                       </Text>
+                      <View className="mt-4">
+                        <TouchableOpacity
+                          style={styles.button3}
+                          className="border border-gray-400 bg-slate-50"
+                          activeOpacity={0.8}
+                          onPress={() => navigation.navigate("newgame")}
+                        >
+                          <Text className="text-xl text-black font-bold">
+                            Start a Game
+                          </Text>
+                        </TouchableOpacity>
+                      </View>
                     </View>
                   )}
                 </View>
               </View>
             </View>
 
+            <Card className="shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  {/* <TrendingUp className="w-5 h-5 text-blue-600" /> */}
+                  <Text>Recent Results</Text>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {completedGames.length > 0 ? (
+                  <View className="space-y-3">
+                    {completedGames.map((game) => (
+                      <View
+                        key={game.id}
+                        className="flex justify-between items-center p-3 bg-blue-50 rounded-lg border border-blue-200"
+                      >
+                        <View>
+                          <Text className="font-semibold">{game.name}</Text>
+                          <Text className="text-sm text-gray-600">
+                            {format(new Date(game.created_date), "MMM d, yyyy")}
+                          </Text>
+                        </View>
+                        <View className="text-right">
+                          <Badge className="bg-blue-100 text-blue-800 border-blue-300">
+                            Completed
+                          </Badge>
+                          {game.winner_id && (
+                            <Text className="text-sm text-gray-600 mt-1">
+                              Winner:{" "}
+                              {
+                                game.players.find(
+                                  (p) => p.player_id === game.winner_id
+                                )?.name
+                              }
+                            </Text>
+                          )}
+                        </View>
+                      </View>
+                    ))}
+                  </View>
+                ) : (
+                  <View className="text-center py-8">
+                    {/* <Trophy className="w-12 h-12 text-gray-400 mx-auto mb-3" /> */}
+                    <Text className="text-gray-500">
+                      No completed games yet
+                    </Text>
+                  </View>
+                )}
+              </CardContent>
+            </Card>
             {/* -------------------------------------------------------------------- */}
             {/* <View className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <Card className="shadow-lg">
@@ -632,6 +701,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 16,
     paddingHorizontal: 32,
+    borderRadius: 12,
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 4,
+  },
+  button3: {
+    width: 140,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 12,
     borderRadius: 12,
     shadowColor: "#000",
     shadowOpacity: 0.2,
