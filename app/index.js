@@ -263,7 +263,7 @@ export default function HomeScreen() {
                     style={{
                       fontSize: 28,
                       fontWeight: "bold",
-                      color: "#3B82F6",
+                      color: "#2563eb",
                     }}
                   >
                     {games.length}
@@ -276,7 +276,7 @@ export default function HomeScreen() {
               </LinearGradient>
 
               <LinearGradient
-                colors={["#eff6ff", "#dbeafe"]} // blue-50 to blue-100
+                colors={["#faf5ff", "#f3e8ff"]} // purple-50 to purple-100
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 style={{
@@ -287,7 +287,7 @@ export default function HomeScreen() {
                   shadowRadius: 6,
                   elevation: 3,
                 }}
-                className="border border-blue-200"
+                className="border border-purple-200"
               >
                 <View
                   style={{
@@ -300,7 +300,7 @@ export default function HomeScreen() {
                     style={{
                       fontSize: 30,
                       fontWeight: "bold",
-                      color: "#2563eb",
+                      color: "#9333ea",
                     }}
                   >
                     Players
@@ -309,7 +309,7 @@ export default function HomeScreen() {
                     name="users"
                     size={32}
                     fontWeight="bold"
-                    color="#3B82F6"
+                    color="#9F7AEA"
                     marginRight={6}
                   />
                 </View>
@@ -319,12 +319,12 @@ export default function HomeScreen() {
                     style={{
                       fontSize: 28,
                       fontWeight: "bold",
-                      color: "#3B82F6",
+                      color: "#9333ea",
                     }}
                   >
                     {games.length}
                   </Text>
-                  <Text style={{ color: "#3B82F6", fontSize: 14 }}>
+                  <Text style={{ color: "#9F7AEA", fontSize: 14 }}>
                     {completedGames.length} completed, {activeGames.length}{" "}
                     active
                   </Text>
