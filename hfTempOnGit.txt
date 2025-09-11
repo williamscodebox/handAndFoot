@@ -1,7 +1,5 @@
 Temp file used in brainstorming ideas
 
-History page needs set up
-
 Game Page needs set up
 
 create marketing video 5 min length -- current at 0:00:11
@@ -15,4 +13,4 @@ work on home screen structure on 09-10-25
 
 index for finding expo/vector-icons -->  https://icons.expo.fyi/Index
 
-
+Work on history page
