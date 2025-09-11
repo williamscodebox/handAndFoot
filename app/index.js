@@ -2,6 +2,11 @@ import { EvilIcons, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
+import Badge from "../components/Badge";
+import Card from "../components/Card";
+import CardContent from "../components/CardContent";
+import CardHeader from "../components/CardHeader";
+import CardTitle from "../components/CardTitle";
 // import {
 //   TrendingUp,
 //   Clock,
@@ -52,6 +57,46 @@ export default function HomeScreen() {
       ];
       setGames(mockGames);
       setPlayers(mockPlayers);
+      //       const mockGames = [
+      //   {
+      //     id: 1,
+      //     name: "Game 1",
+      //     status: "active",
+      //     current_round: 2,
+      //     players: [
+      //       { id: 1, name: "Alice", total_score: 120 },
+      //       { id: 2, name: "Bob", total_score: 95 },
+      //     ],
+      //   },
+      //   {
+      //     id: 2,
+      //     name: "Game 2",
+      //     status: "completed",
+      //     current_round: 4,
+      //     players: [
+      //       { id: 3, name: "Charlie", total_score: 200 },
+      //       { id: 4, name: "Dana", total_score: 180 },
+      //     ],
+      //   },
+      //   {
+      //     id: 3,
+      //     name: "Game 3",
+      //     status: "completed",
+      //     current_round: 3,
+      //     players: [
+      //       { id: 5, name: "Eve", total_score: 150 },
+      //       { id: 6, name: "Frank", total_score: 140 },
+      //     ],
+      //   },
+      // ];
+
+      // const mockPlayers = [
+      //   { id: 1, name: "Alice", games_won: 10 },
+      //   { id: 2, name: "Bob", games_won: 8 },
+      // ];
+
+      setGames(mockGames);
+      setPlayers(mockPlayers);
       setLoading(false);
     }, 1000);
   };
@@ -59,6 +104,7 @@ export default function HomeScreen() {
   const activeGames = games.filter((game) => game.status === "active");
   const completedGames = games.filter((game) => game.status === "completed");
   const topPlayer = players[0];
+  console.log(activeGames.length);
 
   if (loading) {
     return (
@@ -334,82 +380,138 @@ export default function HomeScreen() {
             </View>
 
             {/* Recent Games */}
-            <View className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* <Card className="shadow-lg">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-orange-600" />
-                  <Text>
-                  Active Games
-                  </Text>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {activeGames.length > 0 ? (
-                  <View className="space-y-3">
-                    {activeGames.map((game) => (
-                      <div
-                        key={game.id}
-                        className="flex justify-between items-center p-4 bg-orange-50 rounded-lg border border-orange-200 hover:border-orange-300 transition-colors"
-                      >
-                        <div>
-                          <h4 className="font-semibold">{game.name}</h4>
-                          <p className="text-sm text-gray-600">
-                            Round {game.current_round} • {game.players.length}{" "}
-                            players
-                          </p>
-                          <p className="text-xs text-gray-500 mt-1">
-                            Leader:{" "}
-                            {
-                              game.players.reduce((prev, current) =>
-                                current.total_score > prev.total_score
-                                  ? current
-                                  : prev
-                              ).name
-                            }{" "}
-                            (
-                            {
-                              game.players.reduce((prev, current) =>
-                                current.total_score > prev.total_score
-                                  ? current
-                                  : prev
-                              ).total_score
-                            }{" "}
-                            pts)
-                          </p>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                          <Badge className="bg-orange-100 text-orange-800 border-orange-300">
-                            In Progress
-                          </Badge>
-                          <Link to={createPageUrl(`Game?id=${game.id}`)}>
-                            <Button
-                              size="sm"
-                              className="w-full bg-orange-600 hover:bg-orange-700"
-                            >
-                              <Play className="w-3 h-3 mr-1" />
-                              Continue
-                            </Button>
-                          </Link>
-                        </div>
-                      </div>
-                    ))}
-                  </View>
-                ) : (
-                  <View className="text-center py-8">
-                    <Clock className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-                    <p className="text-gray-500">No active games</p>
-                    <Link to={createPageUrl("NewGame")}>
-                      <Button variant="outline" size="sm" className="mt-2">
-                        Start a Game
-                      </Button>
-                    </Link>
-                  </View>
-                )}
-              </CardContent>
-            </Card> */}
 
-              {/* <Card className="shadow-lg">
+            <View className="flex flex-col gap-8">
+              <Card className="shadow-lg rounded-lg bg-white p-4">
+                <CardHeader>
+                  <CardTitle className="flex flex-row items-center gap-2 text-lg font-bold">
+                    <Feather name="clock" size={24} color="black" />
+                    Active Games
+                  </CardTitle>
+                </CardHeader>
+
+                <CardContent>
+                  {activeGames.length > 0 ? (
+                    <View className="flex flex-col gap-3 mt-3">
+                      {activeGames.map((game) => {
+                        const leader = game.players.reduce((prev, current) =>
+                          current.total_score > prev.total_score
+                            ? current
+                            : prev
+                        );
+                        return (
+                          <View
+                            key={game.id}
+                            className="flex flex-row justify-between items-center p-4 bg-orange-50 rounded-lg border border-orange-200"
+                          >
+                            <View>
+                              <Text className="font-semibold">{game.name}</Text>
+                              <Text className="text-sm text-gray-600">
+                                Round {game.current_round} •{" "}
+                                {game.players.length} players
+                              </Text>
+                              <Text className="text-xs text-gray-500 mt-1">
+                                Leader: {leader.name} ({leader.total_score} pts)
+                              </Text>
+                            </View>
+                            <Badge className="bg-orange-100 border border-orange-300 rounded px-2 py-1">
+                              <Text className="text-orange-800 text-xs">
+                                In Progress
+                              </Text>
+                            </Badge>
+                          </View>
+                        );
+                      })}
+                    </View>
+                  ) : (
+                    <View className="items-center py-8">
+                      <Feather name="clock" size={24} color="black" />
+                      <Text className="text-gray-500 mt-2">
+                        No active games
+                      </Text>
+                    </View>
+                  )}
+                </CardContent>
+              </Card>
+            </View>
+
+            {/* -------------------------------------------------------------------- */}
+            {/* <View className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <Card className="shadow-lg">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    {/* <Clock className="w-5 h-5 text-orange-600" /> 
+                    <Feather name="clock" size={24} color="black" />
+                    <Text>Active Games</Text>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {activeGames.length > 0 ? (
+                    <View className="space-y-3">
+                      {activeGames.map((game) => (
+                        <View
+                          key={game.id}
+                          className="flex justify-between items-center p-4 bg-orange-50 rounded-lg border border-orange-200 hover:border-orange-300 transition-colors"
+                        >
+                          <View>
+                            <Text className="font-semibold">{game.name}</Text>
+                            <Text className="text-sm text-gray-600">
+                              Round {game.current_round} • {game.players.length}{" "}
+                              players
+                            </Text>
+                            <Text className="text-xs text-gray-500 mt-1">
+                              Leader:{" "}
+                              {
+                                game.players.reduce((prev, current) =>
+                                  current.total_score > prev.total_score
+                                    ? current
+                                    : prev
+                                ).name
+                              }{" "}
+                              (
+                              {
+                                game.players.reduce((prev, current) =>
+                                  current.total_score > prev.total_score
+                                    ? current
+                                    : prev
+                                ).total_score
+                              }{" "}
+                              pts)
+                            </Text>
+                          </View>
+                          <View className="flex flex-col gap-2">
+                            <Badge className="bg-orange-100 text-orange-800 border-orange-300">
+                              In Progress
+                            </Badge>
+                            {/* <Link to={createPageUrl(`Game?id=${game.id}`)}>
+                              <Button
+                                size="sm"
+                                className="w-full bg-orange-600 hover:bg-orange-700"
+                              >
+                                <Play className="w-3 h-3 mr-1" />
+                                Continue
+                              </Button>
+                            </Link> 
+                          </View>
+                        </View>
+                      ))}
+                    </View>
+                  ) : (
+                    <View className="text-center py-8">
+                      {/* <Clock className="w-12 h-12 text-gray-400 mx-auto mb-3" /> 
+                      <Feather name="clock" size={24} color="black" />
+                      <Text className="text-gray-500">No active games</Text>
+                      {/* <Link to={createPageUrl("NewGame")}>
+                        <Button variant="outline" size="sm" className="mt-2">
+                          Start a Game
+                        </Button>
+                      </Link> 
+                    </View>
+                  )}
+                </CardContent>
+              </Card> */}
+
+            {/* <Card className="shadow-lg">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-blue-600" />
@@ -455,8 +557,8 @@ export default function HomeScreen() {
                   </div>
                 )}
               </CardContent>
-            </Card> */}
-            </View>
+            </Card> 
+            </View>*/}
           </View>
         </View>
       </LinearGradient>
