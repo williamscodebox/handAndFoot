@@ -11,7 +11,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import Badge from "../components/Badge";
 import CardTitle from "../components/CardTitle";
 import "./../global.css";
 
@@ -417,26 +416,26 @@ export default function HomeScreen() {
                                 players
                               </Text>
                               {leader && (
-                                <Text className="text-xs text-gray-500 mt-1">
+                                <Text className="text-xs text-gray-500 mt-2">
                                   Leader: {leader.name} ({leader.total_score}{" "}
                                   pts)
                                 </Text>
                               )}
                             </View>
-
-                            <View className="bg-orange-100 border border-orange-300 rounded px-2 py-1">
-                              <Text className="text-orange-800 text-xs">
-                                In Progress
-                              </Text>
+                            <View>
+                              <View className="bg-orange-100 border border-orange-300 rounded px-2 py-1">
+                                <Text className="text-orange-800 text-xs">
+                                  In Progress
+                                </Text>
+                              </View>
                               <View className="mt-4">
                                 <TouchableOpacity
-                                  style={styles.button3}
-                                  className="border border-gray-400 bg-slate-50"
+                                  className="border border-orange-300 bg-orange-200 flex-row items-center justify-center py-[6px] px-[12px] rounded-[10px] shadow-lg"
                                   activeOpacity={0.8}
                                   onPress={() => navigation.navigate("newgame")}
                                 >
-                                  <Text className="text-xl text-black font-bold">
-                                    Start a Game
+                                  <Text className="text-xs text-orange-800 font-bold">
+                                    Continue
                                   </Text>
                                 </TouchableOpacity>
                               </View>
@@ -470,7 +469,7 @@ export default function HomeScreen() {
             </View>
 
             <View className="shadow-xl border-2 border-gray-200 rounded-xl bg-slate-50 p-10 pb-2 mb-8">
-              <View>
+              <View className="mb-4">
                 <CardTitle className="flex flex-row items-center gap-4 text-lg font-bold">
                   <Feather
                     name="trending-up"
@@ -484,7 +483,7 @@ export default function HomeScreen() {
 
               <View>
                 {completedGames.length > 0 ? (
-                  <View className="flex flex-col gap-3 mt-3">
+                  <View className="flex flex-col gap-6 mt-3 pb-8">
                     {completedGames.map((game) => {
                       const winner = Array.isArray(game.players)
                         ? game.players.find(
@@ -498,11 +497,11 @@ export default function HomeScreen() {
                           className="flex flex-row justify-between items-center p-3 bg-blue-50 rounded-lg border border-blue-200"
                         >
                           <View>
-                            <Text className="font-semibold">
+                            <Text className="font-semibold mb-1">
                               {game.name || "Untitled Game"}
                             </Text>
                             {game.created_date && (
-                              <Text className="text-sm text-gray-600">
+                              <Text className="text-sm text-gray-600 mt-1">
                                 {format(
                                   new Date(game.created_date),
                                   "MMM d, yyyy"
@@ -512,11 +511,11 @@ export default function HomeScreen() {
                           </View>
 
                           <View className="items-end">
-                            <Badge className="bg-blue-100 border border-blue-300 rounded px-2 py-1">
+                            <View className="bg-blue-100 border border-blue-300 rounded px-2 py-1">
                               <Text className="text-blue-800 text-xs">
                                 Completed
                               </Text>
-                            </Badge>
+                            </View>
                             {winner && (
                               <Text className="text-sm text-gray-600 mt-1">
                                 Winner: {winner.name}
