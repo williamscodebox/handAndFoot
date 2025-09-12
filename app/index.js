@@ -101,10 +101,27 @@ export default function HomeScreen() {
 
   if (loading) {
     return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#B91C1C" />
-        <Text style={{ marginTop: 10 }}>Loading data...</Text>
-      </View>
+      <LinearGradient
+        colors={["#faf5ff", "#eff6ff"]} // purple-50 to blue-50
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={{
+          flex: 1,
+          padding: 32,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <View className="text-center">
+          <ActivityIndicator
+            size="large"
+            color="#9333ea"
+            style={{ marginBottom: 16 }}
+          />
+
+          <Text className="text-gray-600">Loading game history...</Text>
+        </View>
+      </LinearGradient>
     );
   }
 

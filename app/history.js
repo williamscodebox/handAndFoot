@@ -11,7 +11,7 @@ import CardTitle from "../components/CardTitle";
 //   Users,
 // } from "lucide-react";
 import { useEffect, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ActivityIndicator, ScrollView, Text, View } from "react-native";
 
 export default function history() {
   const [games, setGames] = useState([]);
@@ -21,7 +21,7 @@ export default function history() {
 
   useEffect(() => {
     // loadData();
-    setLoading(false);
+    // setLoading(false);
   }, []);
 
   const loadData = async () => {
@@ -60,7 +60,12 @@ export default function history() {
         }}
       >
         <View className="text-center">
-          <View className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></View>
+          <ActivityIndicator
+            size="large"
+            color="#9333ea"
+            style={{ marginBottom: 16 }}
+          />
+
           <Text className="text-gray-600">Loading game history...</Text>
         </View>
       </LinearGradient>
