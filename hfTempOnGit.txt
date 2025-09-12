@@ -13,5 +13,3 @@ index for finding expo/vector-icons -->  https://icons.expo.fyi/Index
 
 Work on history page 09-12-25 
 
-upgrade cli
-npm install -g eas-cli
