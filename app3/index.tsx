@@ -3,7 +3,7 @@ import SingleCardCount from "@/components/SingleCardCount";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { Alert, FlatList, StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function Index() {
   const [counters, setCounters] = useState([
@@ -95,7 +95,7 @@ export default function Index() {
   };
 
   return (
-    <SafeAreaView style={styles.safeContainer}>
+    <SafeAreaProvider style={styles.safeContainer}>
       <View style={styles.container}>
         <FlatList
           data={counters}
@@ -107,7 +107,7 @@ export default function Index() {
         <AppButton onPress={runPrompt}>Clear Score</AppButton>
       </View>
       <StatusBar style="auto" />
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 

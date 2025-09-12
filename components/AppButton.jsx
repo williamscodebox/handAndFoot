@@ -8,8 +8,8 @@ const AppButton = (props) => {
           backgroundColor: props.disabled
             ? "#ccc"
             : pressed
-            ? "#ccc"
-            : props.color || "#F68383",
+              ? "#ccc"
+              : props.color || "#F68383",
         },
         styles.container,
         props.buttonStyles,
