@@ -21,7 +21,7 @@ export default function history() {
 
   useEffect(() => {
     // loadData();
-    // setLoading(false);
+    setLoading(false);
   }, []);
 
   const loadData = async () => {
