@@ -6,6 +6,7 @@ export default {
     slug: "handAndFoot",
     version: "1.1.0",
     orientation: "portrait",
+    entryPoint: "./node_modules/expo-router/entry",
     icon: "./assets/images/splash-icon.png",
     scheme: "handandfoot",
     userInterfaceStyle: "automatic",
