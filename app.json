@@ -2,7 +2,7 @@
   "expo": {
     "name": "handAndFoot",
     "slug": "handAndFoot",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/images/splash-icon.png",
     "scheme": "handandfoot",
@@ -30,7 +30,7 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
+          "imageWidth": 300,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
