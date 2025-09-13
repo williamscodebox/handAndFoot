@@ -1,12 +1,15 @@
-import { BUGSNAG_API_KEY } from "@env";
+import Bugsnag from "@bugsnag/expo";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Constants from "expo-constants";
 import { Drawer } from "expo-router/drawer";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+
+const apiKey = Constants.expoConfig.extra.BUGSNAG_API_KEY;
 
 export default function RootLayout() {
   // Start Bugsnag as early as possible
   Bugsnag.start({
-    apiKey: BUGSNAG_API_KEY,
+    apiKey: apiKey,
     appVersion: "1.1.0", // optional, matches your app.json version
     releaseStage: __DEV__ ? "development" : "production",
   });
