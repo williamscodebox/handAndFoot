@@ -1,5 +1,4 @@
 // app.config.js
-import "dotenv/config";
 
 export default {
   expo: {
@@ -45,7 +44,6 @@ export default {
       typedRoutes: true,
     },
     extra: {
-      BUGSNAG_API_KEY: process.env.BUGSNAG_API_KEY,
       router: {},
       eas: {
         projectId: "d3c45deb-c9bd-4382-aab1-1985ef6d1910",
