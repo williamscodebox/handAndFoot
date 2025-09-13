@@ -15,7 +15,6 @@ import CardTitle from "../components/CardTitle";
 import "./../global.css";
 
 export default function HomeScreen() {
-  Bugsnag.notify(new Error("Test error from Expo 54"));
   const [games, setGames] = useState([]);
   const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(true);
